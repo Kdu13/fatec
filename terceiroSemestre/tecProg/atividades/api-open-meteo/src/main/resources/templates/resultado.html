@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #dbeafe, #f8fafc);
+            --card: #ffffff;
+            --primary: #3b82f6;
+            --text: #0f172a;
+            --muted: #64748b;
+            --soft: #f1f5f9;
+            --radius: 14px;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .back {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .title {
+            font-size: 1.8rem;
+            color: var(--text);
+        }
+
+        .subtitle {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+            gap: 15px;
+        }
+
+        .item {
+            background: var(--soft);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .label {
+            font-size: 0.75rem;
+            color: var(--muted);
+        }
+
+        .value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .error {
+            text-align: center;
+            padding: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <a class="back" th:href="@{/}">← Voltar</a>
+
+    <div th:if="${dados.erro != null}" class="card error">
+        <h2>Erro</h2>
+        <p th:text="${dados.erro}"></p>
+    </div>
+
+    <div th:if="${dados.erro == null}" class="card">
+
+        <h1 class="title" th:text="${descricao}">Clima</h1>
+        <div class="subtitle" th:text="${dados.fuso}">Fuso</div>
+
+        <div class="grid">
+            <div class="item">
+                <div class="label">Temperatura</div>
+                <div class="value" th:text="${dados.climaAtual.temperatura + ' °C'}"></div>
+            </div>
+
+            <div class="item">
+                <div class="label">Vento</div>
+                <div class="value" th:text="${dados.climaAtual.velocidadeVento + ' km/h'}"></div>
+            </div>
+
+            <div class="item">
+                <div class="label">Código</div>
+                <div class="value" th:text="${dados.climaAtual.codigoClima}"></div>
+            </div>
+
+            <div class="item">
+                <div class="label">Horário</div>
+                <div class="value" th:text="${dados.climaAtual.horario}"></div>
+            </div>
+
+            <div class="item">
+                <div class="label">Latitude</div>
+                <div class="value" th:text="${dados.latitude}"></div>
+            </div>
+
+            <div class="item">
+                <div class="label">Longitude</div>
+                <div class="value" th:text="${dados.longitude}"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

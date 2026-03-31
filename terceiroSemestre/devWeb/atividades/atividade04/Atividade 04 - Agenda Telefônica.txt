@@ -1,0 +1,5 @@
+Atividade 04 — Agenda Telefônica
+Objetivo: Criar uma agenda de contatos interativa com operações de cadastro, busca, exclusão e listagem.
+O programa inicia com alguns contatos pré-cadastrados em um dicionário, onde cada chave é um nome e o valor é outro dicionário com o telefone.
+Um laço infinito exibe um menu com 5 opções. Cadastrar salva ou atualiza um contato; buscar localiza pelo nome e exibe o telefone; excluir remove o contato caso ele exista; listar percorre todos os contatos e os exibe.
+A opção 5 encerra o programa com break. O módulo time.sleep(1) é usado para dar uma pequena pausa após cada operação, tornando a interface mais legível.

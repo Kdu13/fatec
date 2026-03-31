@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima Global</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: linear-gradient(135deg, #dbeafe, #f8fafc);
+            --card: rgba(255,255,255,0.75);
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #cbd5f5;
+            --radius: 14px;
+        }
+
+        /* RESET */
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CARD */
+        .card {
+            width: 100%;
+            max-width: 420px;
+            padding: 40px;
+            border-radius: var(--radius);
+            background: var(--card);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        /* TEXT */
+        .title {
+            font-size: 2rem;
+            color: var(--text);
+        }
+
+        .subtitle {
+            margin-top: 8px;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        /* FORM */
+        .form {
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input {
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            font-size: 1rem;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+        }
+
+        /* BUTTON */
+        .btn {
+            margin-top: 10px;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1 class="title">Clima Global</h1>
+    <p class="subtitle">Consulte o clima de qualquer lugar do mundo</p>
+
+    <form class="form" th:action="@{/buscar}" method="get">
+        <input class="input" type="number" name="latitude" step="any" placeholder="Latitude" required>
+        <input class="input" type="number" name="longitude" step="any" placeholder="Longitude" required>
+
+        <button class="btn" type="submit">Consultar Clima</button>
+    </form>
+
+</div>
+
+</body>
+</html>

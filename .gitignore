@@ -1,0 +1,22 @@
+# Node
+node_modules/
+
+# Python
+venv/
+.venv/
+
+# C#
+bin/
+obj/
+
+# Logs
+*.log
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos grandes
+*.zip
+*.rar
+*.mp4

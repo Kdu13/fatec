@@ -1,0 +1,7 @@
+Atividade 05 — Biblioteca Virtual (múltiplos arquivos)
+Objetivo: Simular um sistema de gerenciamento de biblioteca com cadastro de livros, usuários e controle de empréstimos, aplicando conceitos de orientação a objetos.
+O projeto é dividido em quatro arquivos. A classe Livro em livro.py representa um livro com atributos como título, autor, ano e disponibilidade, e possui métodos para emprestar e devolver, controlando o status do livro.
+A subclasse Livro_Digital herda de Livro e adiciona o atributo de tamanho do arquivo, demonstrando herança.
+A classe Usuario em usuario.py representa um usuário com nome, matrícula e lista de livros emprestados; seus métodos controlam a lógica de pegar emprestado e devolver, verificando se o livro está disponível e se pertence ao usuário.
+A classe Biblioteca em biblioteca.py centraliza as listas de livros e usuários, oferecendo métodos para adicionar e listar cada um.
+Por fim, main.py integra tudo com um menu interativo de 6 opções, permitindo cadastrar livros físicos ou digitais, cadastrar usuários, realizar empréstimos, devoluções e listar os livros disponíveis.

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pais.nome != null ? pais.nome.nomeComum + ' — Atlas Mundial' : 'Resultado'}">Resultado — Atlas Mundial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:       #0f0d0a;
+            --parchment: #f0e9d6;
+            --aged:      #d4c5a9;
+            --rust:      #b5451b;
+            --gold:      #c8963e;
+            --deep:      #1a1510;
+            --muted:     #7a6e5f;
+            --panel:     rgba(240,233,214,.05);
+            --border:    rgba(200,150,62,.18);
+        }
+
+        html, body {
+            min-height: 100%;
+            background: var(--ink);
+            color: var(--parchment);
+            font-family: 'Crimson Text', Georgia, serif;
+        }
+
+        /* ── BACKGROUND ── */
+        body::before {
+            content: '';
+            position: fixed; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 55% at 30% 40%, #201608 0%, transparent 65%),
+                radial-gradient(ellipse 50% 40% at 80% 70%, #1a0d05 0%, transparent 60%),
+                repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(200,150,62,.045) 60px),
+                repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(200,150,62,.045) 60px);
+        }
+
+        /* ── PAGE LAYOUT ── */
+        .page {
+            position: relative; z-index: 5;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        /* ── BACK LINK ── */
+        .back {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: 'DM Mono', monospace;
+            font-size: .72rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color .2s;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeUp .5s .05s ease forwards;
+        }
+        .back:hover { color: var(--gold); }
+        .back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+        /* ── ERROR STATE ── */
+        .error-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 55vh;
+            text-align: center;
+            gap: 1.2rem;
+            opacity: 0;
+            animation: fadeUp .6s .2s ease forwards;
+        }
+        .error-icon {
+            font-size: 3rem;
+            opacity: .5;
+        }
+        .error-wrap h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-style: italic;
+            color: var(--gold);
+        }
+        .error-wrap p {
+            color: var(--muted);
+            font-size: 1.1rem;
+            max-width: 380px;
+            line-height: 1.6;
+        }
+
+        /* ── HERO SECTION ── */
+        .hero {
+            display: flex;
+            align-items: flex-end;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .flag-wrap {
+            flex-shrink: 0;
+            width: 180px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,.5), 0 0 0 1px rgba(200,150,62,.08);
+            opacity: 0;
+            animation: fadeUp .6s .15s ease forwards;
+        }
+        .flag-wrap img { display: block; width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+        .flag-wrap .no-flag {
+            width: 100%; aspect-ratio: 4/3;
+            background: var(--panel);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--muted); font-size: .85rem; font-family: 'DM Mono', monospace;
+            letter-spacing: .1em;
+        }
+
+        .hero-text {
+            flex: 1;
+            min-width: 200px;
+        }
+        .hero-text .label-small {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0;
+            animation: fadeUp .5s .2s ease forwards;
+        }
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            font-weight: 700;
+            line-height: 1.08;
+            color: var(--parchment);
+            margin-top: .3rem;
+            opacity: 0;
+            animation: fadeUp .6s .3s ease forwards;
+        }
+        .hero-text h1 em {
+            font-style: italic;
+            color: var(--aged);
+            font-size: .65em;
+            display: block;
+            margin-top: .2rem;
+        }
+        .hero-text .tag-row {
+            display: flex; gap: .6rem; flex-wrap: wrap;
+            margin-top: .9rem;
+            opacity: 0;
+            animation: fadeUp .5s .45s ease forwards;
+        }
+        .tag {
+            background: rgba(200,150,62,.1);
+            border: 1px solid rgba(200,150,62,.2);
+            border-radius: 2px;
+            padding: .2rem .7rem;
+            font-family: 'DM Mono', monospace;
+            font-size: .7rem;
+            letter-spacing: .12em;
+            color: var(--gold);
+            text-transform: uppercase;
+        }
+
+        /* ── DIVIDER ── */
+        .rule {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, var(--border), transparent);
+            margin: 2.5rem 0;
+            opacity: 0;
+            animation: fadeUp .4s .5s ease forwards;
+        }
+
+        /* ── STATS GRID ── */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1px;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeUp .6s .55s ease forwards;
+        }
+
+        .stat-card {
+            background: var(--panel);
+            padding: 1.6rem 1.4rem;
+            transition: background .2s;
+            position: relative;
+        }
+        .stat-card + .stat-card { border-left: 1px solid var(--border); }
+        .stat-card:hover { background: rgba(200,150,62,.07); }
+
+        .stat-card .stat-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 9px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: .5rem;
+        }
+        .stat-card .stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--parchment);
+            line-height: 1.2;
+        }
+        .stat-card .stat-value.mono {
+            font-family: 'DM Mono', monospace;
+            font-size: 1.1rem;
+            letter-spacing: .04em;
+        }
+        .stat-card .stat-sub {
+            font-size: .85rem;
+            color: var(--muted);
+            margin-top: .2rem;
+        }
+
+        /* ── DETAIL SECTION ── */
+        .detail-section {
+            margin-top: 2.5rem;
+            opacity: 0;
+            animation: fadeUp .6s .7s ease forwards;
+        }
+        .section-title {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+            padding-bottom: .6rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .detail-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: .6rem;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: .65rem 0;
+            border-bottom: 1px solid rgba(200,150,62,.07);
+        }
+        .detail-row .dk {
+            font-family: 'DM Mono', monospace;
+            font-size: .75rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+        .detail-row .dv {
+            font-size: 1rem;
+            color: var(--parchment);
+            text-align: right;
+        }
+        .detail-row .dv.na { color: var(--muted); font-style: italic; }
+
+        /* ── FOOTER ── */
+        .foot {
+            position: fixed; bottom: 1.8rem; right: 2.5rem;
+            font-family: 'DM Mono', monospace; font-size: 9px;
+            letter-spacing: .2em; color: rgba(200,150,62,.25);
+            z-index: 10;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 580px) {
+            .hero { flex-direction: column; align-items: flex-start; }
+            .flag-wrap { width: 140px; }
+            .stat-card + .stat-card { border-left: none; border-top: 1px solid var(--border); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+
+    <a class="back" th:href="@{/}">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        Voltar ao Atlas
+    </a>
+
+    <!-- ════════════════════════ ERROR STATE ════════════════════════ -->
+    <div class="error-wrap" th:if="${pais.response == 'False' or pais.nome == null}">
+        <div class="error-icon">🌐</div>
+        <h2>País não encontrado</h2>
+        <p th:text="${pais.error != null ? pais.error : 'Verifique o nome digitado e tente novamente.'}">Erro</p>
+    </div>
+
+    <!-- ════════════════════════ SUCCESS STATE ════════════════════════ -->
+    <div th:if="${pais.nome != null and pais.response != 'False'}">
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="flag-wrap">
+                <img th:if="${pais.bandeiras != null and pais.bandeiras.png != null}"
+                     th:src="${pais.bandeiras.png}"
+                     th:alt="${pais.nome.nomeComum + ' — bandeira'}">
+                <img th:if="${pais.bandeiras != null and pais.bandeiras.png == null and pais.bandeiras.svg != null}"
+                     th:src="${pais.bandeiras.svg}"
+                     th:alt="${pais.nome.nomeComum + ' — bandeira'}">
+                <div class="no-flag" th:if="${pais.bandeiras == null}">N/A</div>
+            </div>
+
+            <div class="hero-text">
+                <div class="label-small">País Encontrado</div>
+                <h1>
+                    <span th:text="${pais.nome.nomeComum}">Nome</span>
+                    <em th:text="${pais.nome.nomeOfiacial}">Nome Oficial</em>
+                </h1>
+                <div class="tag-row">
+                    <span class="tag" th:if="${pais.regiao != null}" th:text="${pais.regiao}">Região</span>
+                    <span class="tag" th:if="${pais.subRegiao != null}" th:text="${pais.subRegiao}">Sub-região</span>
+                    <span class="tag" th:if="${pais.sigla != null}" th:text="${pais.sigla}">FIFA</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="rule"></div>
+
+        <!-- STATS CARDS -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Capital</div>
+                <div class="stat-value" th:text="${pais.capital}">Capital</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">População</div>
+                <div class="stat-value mono"
+                     th:text="${#numbers.formatInteger(pais.populacao, 0, 'DEFAULT')}">0</div>
+                <div class="stat-sub">habitantes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Área Total</div>
+                <div class="stat-value mono"
+                     th:text="${#numbers.formatDecimal(pais.area, 0, 'DEFAULT', 0, 'POINT')}">0</div>
+                <div class="stat-sub">km²</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Sigla FIFA</div>
+                <div class="stat-value"
+                     th:text="${pais.sigla != null ? pais.sigla : '—'}">—</div>
+            </div>
+        </div>
+
+        <!-- DETAIL TABLE -->
+        <div class="detail-section">
+            <div class="section-title">Informações Geográficas</div>
+            <div class="detail-list">
+                <div class="detail-row">
+                    <span class="dk">Região</span>
+                    <span class="dv" th:text="${pais.regiao != null ? pais.regiao : 'N/A'}"
+                          th:classappend="${pais.regiao == null ? 'na' : ''}">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="dk">Sub-região</span>
+                    <span class="dv" th:text="${pais.subRegiao != null ? pais.subRegiao : 'N/A'}"
+                          th:classappend="${pais.subRegiao == null ? 'na' : ''}">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="dk">Capital</span>
+                    <span class="dv" th:text="${pais.capital}">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="dk">Nome Oficial</span>
+                    <span class="dv" th:text="${pais.nome.nomeOfiacial}">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="dk">Nome Comum</span>
+                    <span class="dv" th:text="${pais.nome.nomeComum}">—</span>
+                </div>
+                <div class="detail-row">
+                    <span class="dk">Código FIFA</span>
+                    <span class="dv"
+                          th:text="${pais.sigla != null ? pais.sigla : 'N/A'}"
+                          th:classappend="${pais.sigla == null ? 'na' : ''}">—</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- end success state -->
+
+</div>
+
+<div class="foot">ATLAS MUNDIAL · v1.0</div>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atlas Mundial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital@0;1&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --ink:        #0f0d0a;
+            --parchment:  #f0e9d6;
+            --aged:       #d4c5a9;
+            --rust:       #b5451b;
+            --gold:       #c8963e;
+            --deep:       #1a1510;
+            --muted:      #7a6e5f;
+        }
+
+        html, body {
+            height: 100%;
+            background: var(--ink);
+            color: var(--parchment);
+            font-family: 'Crimson Text', Georgia, serif;
+            overflow: hidden;
+        }
+
+        /* ── GRID BACKGROUND ── */
+        .canvas {
+            position: fixed; inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 50% 50%, #2a1f0e 0%, var(--ink) 70%),
+                repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(200,150,62,.06) 60px),
+                repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(200,150,62,.06) 60px);
+            z-index: 0;
+        }
+
+        /* ── DECORATIVE CIRCLES ── */
+        .compass {
+            position: fixed;
+            right: -120px; top: 50%;
+            transform: translateY(-50%);
+            width: 520px; height: 520px;
+            border-radius: 50%;
+            border: 1px solid rgba(200,150,62,.12);
+            box-shadow: 0 0 0 40px rgba(200,150,62,.04), 0 0 0 80px rgba(200,150,62,.025);
+            z-index: 1;
+            animation: slowRotate 80s linear infinite;
+        }
+        .compass::before {
+            content: '';
+            position: absolute; inset: 30px;
+            border-radius: 50%;
+            border: 1px dashed rgba(200,150,62,.15);
+        }
+        .compass::after {
+            content: 'N · NE · E · SE · S · SW · W · NW · N · NE · E · SE · S · SW · W · NW';
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 8px;
+            color: rgba(200,150,62,.2);
+            text-align: center;
+            padding: 10px;
+            word-break: break-all;
+            line-height: 2.5;
+        }
+        @keyframes slowRotate { to { transform: translateY(-50%) rotate(360deg); } }
+
+        /* ── MAIN WRAPPER ── */
+        .wrapper {
+            position: relative; z-index: 10;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 0 8vw;
+            max-width: 780px;
+        }
+
+        /* ── LABEL ── */
+        .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0;
+            animation: fadeUp .6s .2s ease forwards;
+        }
+
+        /* ── HEADING ── */
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            color: var(--parchment);
+            margin-top: .5rem;
+            opacity: 0;
+            animation: fadeUp .7s .35s ease forwards;
+        }
+        h1 em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        /* ── SUBTEXT ── */
+        .sub {
+            font-size: 1.15rem;
+            color: var(--muted);
+            margin-top: 1rem;
+            max-width: 420px;
+            line-height: 1.65;
+            opacity: 0;
+            animation: fadeUp .7s .5s ease forwards;
+        }
+
+        /* ── DIVIDER ── */
+        .divider {
+            width: 60px; height: 2px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeUp .6s .6s ease forwards;
+        }
+
+        /* ── FORM ── */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            width: 100%;
+            max-width: 480px;
+            opacity: 0;
+            animation: fadeUp .7s .7s ease forwards;
+        }
+
+        .field-wrap {
+            position: relative;
+        }
+
+        .field-wrap svg {
+            position: absolute;
+            left: 1rem; top: 50%;
+            transform: translateY(-50%);
+            width: 18px; height: 18px;
+            stroke: var(--muted);
+            fill: none;
+            stroke-width: 1.5;
+            transition: stroke .25s;
+            pointer-events: none;
+        }
+
+        input[name="pais"] {
+            width: 100%;
+            background: rgba(240,233,214,.06);
+            border: 1px solid rgba(200,150,62,.25);
+            border-radius: 4px;
+            padding: .95rem 1rem .95rem 3rem;
+            font-family: 'Crimson Text', serif;
+            font-size: 1.1rem;
+            color: var(--parchment);
+            outline: none;
+            transition: border-color .25s, background .25s, box-shadow .25s;
+            letter-spacing: .02em;
+        }
+        input[name="pais"]::placeholder { color: var(--muted); font-style: italic; }
+        input[name="pais"]:focus {
+            border-color: var(--gold);
+            background: rgba(200,150,62,.07);
+            box-shadow: 0 0 0 3px rgba(200,150,62,.1);
+        }
+        input[name="pais"]:focus + svg,
+        .field-wrap:focus-within svg { stroke: var(--gold); }
+
+        button[type="submit"] {
+            align-self: flex-start;
+            background: var(--rust);
+            color: var(--parchment);
+            border: none;
+            border-radius: 4px;
+            padding: .85rem 2.5rem;
+            font-family: 'DM Mono', monospace;
+            font-size: .8rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: background .25s, transform .1s;
+        }
+        button[type="submit"]::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.1) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform .4s ease;
+        }
+        button[type="submit"]:hover { background: #c94e22; }
+        button[type="submit"]:hover::before { transform: translateX(100%); }
+        button[type="submit"]:active { transform: scale(.97); }
+
+        /* ── FOOTER COORDINATES ── */
+        .coords {
+            position: fixed;
+            bottom: 2rem; left: 8vw;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: .15em;
+            color: rgba(200,150,62,.3);
+            z-index: 10;
+        }
+
+        /* ── ANIMATIONS ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="canvas"></div>
+<div class="compass"></div>
+
+<div class="wrapper">
+    <span class="label">Atlas Mundial &mdash; Consulta de Países</span>
+    <h1>Explore o<br><em>mundo</em><br>inteiro.</h1>
+    <p class="sub">Digite o nome de qualquer país para descobrir sua capital, população, região, área e muito mais.</p>
+    <div class="divider"></div>
+
+    <form th:action="@{/buscar}" method="get">
+        <div class="field-wrap">
+            <input
+                type="text"
+                name="pais"
+                placeholder="Ex: Brazil, Japan, France…"
+                autocomplete="off"
+                autofocus
+                required
+            >
+            <!-- Globe icon -->
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10"/>
+                <ellipse cx="12" cy="12" rx="4" ry="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+        </div>
+        <button type="submit">Explorar →</button>
+    </form>
+</div>
+
+<div class="coords">0°00′N · 0°00′W &nbsp;·&nbsp; ATLAS v1.0</div>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+Atividade 02 — Jogo de Loteria
+Objetivo: Implementar um mini-jogo onde o usuário tenta adivinhar números sorteados pelo computador.
+O código possui duas funções. A função nums_aleatorios() gera uma lista com 5 números únicos e aleatórios entre 1 e 10, garantindo que não haja repetições antes de adicionar cada número.
+A função acertos() compara as listas do usuário e do computador, contando quantos números coincidem.
+No fluxo principal, o usuário digita 5 números distintos, o computador sorteia os seus, e o programa exibe os números sorteados e a pontuação final do jogador.

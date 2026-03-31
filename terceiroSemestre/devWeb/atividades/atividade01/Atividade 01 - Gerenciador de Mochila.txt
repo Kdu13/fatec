@@ -1,0 +1,7 @@
+Atividade 01 — Gerenciador de Mochila
+Objetivo: Simular o gerenciamento de itens em uma mochila com limite de peso.
+O programa começa definindo um limite fixo de 23 kg e pede o nome do mochileiro.
+Em seguida, entra em um laço que continua até o usuário digitar "fim".
+A cada iteração, o usuário informa o nome e o peso de um item.
+O código verifica se adicionar aquele item ultrapassaria o limite: se couber, o item é registrado e o peso total é atualizado; se não couber, exibe um aviso.
+Ao encerrar, o programa exibe o nome do mochileiro, o peso total carregado, o espaço restante na mochila e a lista de todos os itens adicionados.

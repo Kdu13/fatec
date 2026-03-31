@@ -1,0 +1,4 @@
+Atividade 03 — Analisador de Números Primos
+Objetivo: Encontrar e analisar todos os números primos em um intervalo definido pelo usuário.
+O programa recebe dois números e percorre todos os valores entre eles usando a função ehPrimo(), que testa se um número é divisível por qualquer valor entre 2 e ele mesmo menos 1.
+A cada primo encontrado, um contador é incrementado e o programa registra qual foi o menor e o maior primo do intervalo. Ao final, exibe a quantidade total de primos e, se houver ao menos um, mostra o menor e o maior encontrado.

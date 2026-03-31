@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Bhaskara</title>
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        legend {
+            font-size: 2.5em;
+            margin: 2em 0;
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+        }
+        label{
+            font-size: 1.5em;
+        }
+        input{
+            font-size: 1.5em;
+            
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button{
+            width: 100%;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+        main > p{
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+            font-size: 1.3em;  
+            padding: 2em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html">Home</a>
+        <a href="area_trapezio.html">Calculadora Area do Trapezio</a>
+        <a href="bhaskara.html">Calculadora Bhaskara</a>
+        <a href="juros_compostos.html">Calculadora de Juros Compostos</a>
+        <a href="mov_uni_acelerado.html">Calculadora Movimento Uniforme Acelerado</a>
+    </header>
+
+    <main>
+        <legend>Calculo de Bhaskara</legend>
+        <form onsubmit="calcular(event)">
+            <label for="a">Digite o a: </label>
+            <input type="text" id="a" min="0.01" required><br>
+
+            <label for="b">Digite o b: </label>
+            <input type="text" id="b" required><br>
+
+            <label for="c">Digite o c: </label>
+            <input type="text" id="c" required><br>
+            <button>Calcular</button>
+        </form>
+
+        <p id="resultado"></p>
+    </main>
+
+    <footer>
+        <p> Calos Eduardo &copy; João Pedro</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+         function calcular(event){
+            event.preventDefault();
+            const a = parseFloat(document.getElementById("a").value);
+            const b = parseFloat(document.getElementById("b").value);
+            const c= parseFloat(document.getElementById("c").value);
+            const resultado = document.getElementById("resultado");
+
+            let delta = b * b - 4 * a * c
+            let x1, x2
+
+            if(delta < 0 ){
+                resultado.innerHTML = "Delta negativo. Nenhuma raiz real."
+            }
+            else{
+                 x1 = (-b + Math.sqrt(delta)) / (2 * a)
+                 x2 = (-b - Math.sqrt(delta)) / (2 * a)
+            }
+
+            resultado.innerHTML = "Com o valor de a = " + a + ", o valor de b = " + b + " e valor de c = " + c + ".<br> O Delta = " + delta + ", o x1 = " + x1 + " e o x2 = " + x2 + ".";
+        }
+
+    </script>
+</body>
+</html>

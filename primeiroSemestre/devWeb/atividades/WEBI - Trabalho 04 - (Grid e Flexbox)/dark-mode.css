@@ -1,0 +1,105 @@
+/* 🌑 DARK MODE */
+
+body.dark-mode,
+html.dark-mode {
+    background-color: #1A1A1E;
+    color: #e0e0e0;
+}
+
+.dark-mode #menu {
+    background: linear-gradient(to top left, #333, #555);
+    border-bottom: 1px solid #888;
+    box-shadow: 2px 2px 5px #000;
+}
+
+.dark-mode .logo_completa:hover,
+.dark-mode .whats_form:hover,
+.dark-mode .logo_rodape:hover {
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.5));
+}
+
+.dark-mode .links>.link {
+    color: #66b3ff;
+}
+.dark-mode .links>.link:hover {
+    color: #66b3ff;
+    text-shadow: 2px 2px 5px #66b3ff;
+}
+
+.dark-mode .setup_box {
+    border: 1px solid #838386;
+    color: #66b3ff;
+    text-shadow: 2px 2px 5px #8aaaff;
+    background-color: #1A1A1E;
+}
+
+.dark-mode .setup_box:hover {
+    box-shadow: 3px 3px 10px #555;
+    text-shadow: 2px 2px 5px #689ae4,
+        2px 2px 10px #689ae4;
+}
+
+.dark-mode .imagem_parallax {
+    border: 1px solid #838386;
+}
+
+.dark-mode .texto_parallax {
+    color: whitesmoke;
+    text-shadow: 3px 3px 10px rgb(200, 100, 255);
+}
+
+.dark-mode .texto_parallax:hover {
+    background-color: rgba(200, 100, 255, 0.2);
+}
+
+.dark-mode .box_servico {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid #666;
+}
+
+.dark-mode .texto_servico {
+    color: #e0e0e0;
+    text-shadow: 3px 3px 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .formulario_box,
+.dark-mode .botao_formulario {
+    background-color: #1A1A1E;
+    border: 1px solid #999;
+    color: #eee;
+}
+
+.dark-mode .label_formulario {
+    color: #ccc;
+}
+
+.dark-mode .rodape_box {
+    background-color: #2a2a2a;
+    color: #ddd;
+}
+
+.dark-mode .direitos {
+    background-color: #1A1A1E;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.dark-mode .mapa iframe:hover {
+    filter: drop-shadow(0px 0px 15px rgba(255, 255, 255, 0.5));
+}
+
+.dark-mode .titulos {
+    color: #66b3ff;
+    text-shadow: 3px 3px 10px #66b3ff;
+}
+
+.dark-mode .mapa > a, 
+.mapa > div > a {
+    text-decoration: none;
+    color: whitesmoke;
+}
+
+.dark-mode .mudar_tema {
+    color: rgba(245, 245, 245, 0.801);
+    border: 1px solid rgba(245, 245, 245, 0.801);
+}
+

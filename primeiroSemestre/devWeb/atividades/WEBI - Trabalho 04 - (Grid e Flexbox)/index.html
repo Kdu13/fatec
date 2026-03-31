@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsivo_575.css">
+    <link rel="stylesheet" href="dark-mode.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:wght@700&family=JetBrains+Mono:wght@400&family=Ponomar&family=Amatic+SC:wght@400;700&family=Barriecito&family=Indie+Flower&family=Limelight&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="shortcut icon" href="image/logos/logo_icone.ico" type="image/x-icon">
+    <title>ReparaBit | Seu setup, nossa missão!</title>
+</head>
+
+
+<body>
+    <header id="menu">
+
+        <a href="#home">
+            <img src="image/logos/logo_completa_azul.png" alt="logo_preta" class="logo_completa">
+        </a>
+
+        <div class="links">
+            <a href="#home" class="link">Home</a>
+            <a href="#sobre" class="link">Sobre</a>
+            <a href="#servicos" class="link">Serviços</a>
+            <a href="#contato" class="link">Contato</a>
+            <button onclick="toggleDarkMode()" class="mudar_tema">Alterar tema</button>
+        </div>
+        
+    </header>
+
+    <main id="home">
+        <section class="setups">
+            <div class="setup_box">
+                <img src="image/setups/setup_pobre.jpg" alt="setup_pobre">
+                <p>Seu Setup antes da ReparaBit</p>
+            </div>
+            <div class="setup_box">
+                <img src="image/setups/seTOP.png" alt="seTOP">
+                <p>Seu Setup depois da ReparaBit</p>
+            </div>
+        </section>
+
+        <h1 class="titulos" id="sobre">Quem somos</h1>
+        <div class="parallax_box">
+            <div class="imagem_parallax">
+                <div class="texto_parallax">
+                    <h1>Somos a Reparabit, uma empresa pequena, formada por duas pessoas apaixonadas por tecnologia e
+                        qualidade.
+                        Trabalhamos com dedicação para oferecer os melhores serviços em montagem, limpeza e manutenção
+                        de PCs —
+                        sempre com atenção aos detalhes, preço justo e atendimento de confiança. Aqui, cada computador é
+                        tratado
+                        como se fosse nosso, porque acreditamos que um bom serviço começa com cuidado e termina com
+                        resultado.</h1>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="titulos">Serviços oferecidos pela ReparaBit</h1>
+        <section id="servicos">
+            <div class="conserto_notebook box_servico">
+                <div class="box_img_servico">
+                    <img src="image/servicos/conserto_note.png" alt="conserto_notebook" class="img_servico">
+                </div>
+                <div class="texto_servico">
+                    <h2>Conserto de Notebook</h2>
+                    <p>Na ReparaBit, seu notebook está em boas mãos. Fazemos reparos rápidos, com diagnóstico preciso e
+                        peças de qualidade. Problemas com tela, lentidão ou falhas no sistema?A gente resolve.</p>
+                </div>
+            </div>
+
+            <div class="conserto_computador box_servico">
+                <div class="box_img_servico">
+                    <img src="image/servicos/conserto_pc.png" alt="conserto_computador" class="img_servico">
+                </div>
+                <div class="texto_servico">
+                    <h2>Conserto de Computador</h2>
+                    <p>Seu PC está lento, travando ou não liga? A ReparaBit resolve! Fazemos consertos com agilidade,
+                        peças confiáveis e atenção aos detalhes. Do hardware ao software, cuidamos de tudo pra você.</p>
+                </div>
+            </div>
+
+            <div class="limpeza_pc_note box_servico">
+                <div class="box_img_servico">
+                    <img src="image/servicos/limpeza.png" alt="limpeza" class="img_servico">
+                </div>
+                <div class="texto_servico">
+                    <h2>Limpeza de Notebook e Computador</h2>
+                    <p>Poeira e sujeira podem causar superaquecimento e lentidão. Na ReparaBit, fazemos a limpeza
+                        completa do seu equipamento, garantindo mais desempenho, durabilidade e segurança. Seu
+                        Computador ou Notebook como novo, por dentro e por fora</p>
+                </div>
+            </div>
+
+            <div class="montagem_computador box_servico">
+                <div class="box_img_servico">
+                    <img src="image/servicos/montagem.png" alt="montagem_computador" class="img_servico">
+                </div>
+                <div class="texto_servico">
+                    <h2>Montagem de Computador</h2>
+                    <p>Quer um PC sob medida? A ReparaBit monta sua máquina do jeito que você precisa. Seja para games,
+                        trabalho ou estudos. Montagem profissional, com os melhores componentes e o desempenho que você
+                        merece.</p>
+                </div>
+            </div>
+
+            <div class="upgrades box_servico">
+                <div class="box_img_servico">
+                    <img src="image/servicos/upgrades.png" alt="upgrades" class="img_servico">
+                </div>
+                <div class="texto_servico">
+                    <h2>Upgrade de peças</h2>
+                    <p>Seu computador merece mais desempenho. Na ReparaBit, fazemos upgrade de memória, SSD, placa de
+                        vídeo e muito mais. Avaliamos seu equipamento e indicamos as melhores opções para deixar tudo
+                        mais rápido e eficiente.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <h1 class="titulos">Entre em Contato</h1>
+        <section id="contato" class="contatos_box">
+            <form class="formulario_box">
+                <label class="label_formulario" for="nome">Nome:</label>
+                <input class="input_formulario" type="text" id="nome" name="nome" required>
+
+                <label class="label_formulario" for="email">E-mail:</label>
+                <input class="input_formulario" type="email" id="email" name="email" required>
+
+                <label class="label_formulario" for="servico">Serviço:</label>
+                <input class="input_formulario" type="text" id="servico" name="servico">
+
+                <label class="label_formulario" for="detalhes">Detalhes:</label>
+                <textarea class="textarea_formulario" id="detalhes" name="detalhes" rows="5" required></textarea>
+
+                <button class="botao_formulario" type="submit">Enviar</button>
+            </form>
+            <div class="whats_box_form">
+                <a class="whats_form_esq whats_form" href="https://wa.me/5513982215305" target="_blank"> <i
+                        class="fab fa-whatsapp"></i> Carlos Eduardo</a>
+                <a class="whats_form_dir whats_form" href="https://wa.me/5513981309727" target="_blank"> João Pedro <i
+                        class="fab fa-whatsapp"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer id="rodape" class="footer_box">
+        <section class="rodape_box">
+            <div class="logo_rodape divs_rodape">
+                <img src="image/logos/logo_completa_preta.png" alt="logo_completa">
+                <p>Na Reparabit somos só dois, mas fazemos de tudo pro seu PC ficar tinindo! Montamos, limpamos e
+                    arrumamos
+                    com capricho, preço justo e aquele atendimento de quem curte o que faz.</p>
+            </div>
+            <div class="horario_funcionamento divs_rodape">
+                <h1>Horário de Funcionamento</h1>
+                <p>Segunda a Sexta: 09:00 às 19:00</p>
+                <p>Sábados: 10:00 às 14:00</p>
+            </div>
+            <div class="mapa divs_rodape">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.7352296857594!2d-46.414768123754286!3d-24.005125078047012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce1db2e586da8d%3A0x271ae3e10bdc671e!2sFatec%20Praia%20Grande!5e0!3m2!1spt-BR!2sbr!4v1744501883760!5m2!1spt-BR!2sbr"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <a class="link_mapa"
+                    href="https://www.google.com/maps?ll=-24.00513,-46.412193&z=15&t=m&hl=pt-BR&gl=BR&mapclient=embed&cid=2817815072579807006">Praça
+                    19 de Janeiro, 144 - Boqueirão, Praia Grande - SP, 11700-100</a>
+                <div class="div_contato_rodape">
+                    <a href="mailto:carlos.correia3@fatec.sp.gov.br"><i class="fas fa-envelope"></i>Carlos Eduardo</a>
+                    <a href="https://wa.me/5513982215305" target="_blank"><i class="fab fa-whatsapp link_contato_cadu"></i>(13) 9
+                        82215305</a>
+                </div>
+                <div>
+                    <a href="mailto:joao.oliveira368@fatec.sp.gov.br"><i class="fas fa-envelope"></i>Joao Pedro</a>
+                    <a href="https://wa.me/5513981309727" target="_blank"><i class="fab fa-whatsapp link_contato_pedro"></i>(13) 9
+                        81309727</a>
+                </div>
+            </div>
+        </section>
+        <div class="direitos">
+            <p>ReparaBit &copy; Direitos Reservados 2025</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        main{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+        section{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+        section > p{
+            font-size: 5em;
+        }
+        .cima_direita{
+            width: 80%;
+            grid-column: 2;
+            grid-row: 1;
+            transform: rotate(25deg);
+
+        }
+        .baixo_esquerda{
+            height: 40%;
+            font-size: 2em;
+            grid-column: 1;
+            grid-row: 2;
+            transform: rotate(-40deg);
+
+        }
+        .baixo_direita{
+            margin-top: 50px;
+            height: 40%;
+            width: 80%;
+            font-size: 1.2em;
+            grid-column: 2;
+            grid-row: 2;
+            transform: rotate(5deg);
+
+        }
+
+    </style>
+    <title>Pagina Inicial</title>
+</head>
+<body>
+    <header>
+        <a href="pag_inicial.html">Home</a>
+        <a href="area_trapezio.html">Calculadora Area do Trapezio</a>
+        <a href="bhaskara.html">Calculadora Bhaskara</a>
+        <a href="juros_compostos.html">Calculadora de Juros Compostos</a>
+        <a href="mov_uni_acelerado.html">Calculadora Movimento Uniforme Acelerado</a>
+    </header>
+
+    <main>
+        <section>
+            <p>Fatec PG - WEBI</p>
+        </section>
+
+        <section class="cima_direita">
+            <p>Calculadoras</p>
+        </section>
+
+        <section class="baixo_esquerda">
+            <p>E=mc²</p>
+        </section>
+
+        <section class="baixo_direita">
+            <p>e^(iπ) + 1 = 0</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p> Calos Eduardo &copy; João Pedro</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

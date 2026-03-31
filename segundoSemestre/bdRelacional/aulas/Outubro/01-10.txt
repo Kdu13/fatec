@@ -1,0 +1,244 @@
+   ##(BLOCOS ANONIMOS)##
+ 
+--EXERCICIO 1 - Criar um bloco anônimo que entre com 3 notas (VARIÁVEIS DE ENTRADA, PRECISO FORNECER EM TEMPO DE EXECUÇÃO) e exiba a média aritmética final (VARIAVEL DE SAIDA).
+
+DECLARE 
+    V_N1 NUMBER(4,2) := :NOTA1; 
+    V_N2 NUMBER(4,2) := :NOTA2;
+    V_N3 NUMBER(4,2) := :NOTA3;
+    V_MEDIA NUMBER(4,2); 
+BEGIN
+    V_MEDIA := (V_N1 + V_N2 + V_N3)/3;
+    DBMS_OUTPUT.PUT_LINE('Media = ' || V_MEDIA);
+END;
+ 
+ 
+--EXERCICIO 2 - Criar um bloco anônimo que entre com o valor de salário e exiba o valor de vale transporte 6% sobre o salário:
+
+DECLARE
+    V_SALARIO NUMBER(9,2) := :SALARIO;
+    V_VALE NUMBER(9,2);
+BEGIN
+    V_VALE :=  V_SALARIO * 0.06;
+    DBMS_OUTPUT.PUT_LINE('Valor do vale: ' || V_VALE);
+END;
+ 
+ 
+--EXERCICIO 3 - Criar um bloco anônimo que informe o salário e retorne o desconto de vale transporte (6% sobre o salário). Exibir o salário informado, o vale transporte e o salário já com o desconto de vale transporte.
+
+DECLARE
+    v_salario NUMBER(6,2) := :SALARIO;
+    v_vale_transporte NUMBER(6,2);
+    v_salario_descontado NUMBER(6,2);
+BEGIN
+    v_vale_transporte := (v_salario * 0.06);
+    v_salario_descontado := v_salario - v_vale_transporte;
+    DBMS_OUTPUT.PUT_LINE('Salário = ' || v_salario);
+    DBMS_OUTPUT.PUT_LINE('Vale Transporte = ' || v_vale_transporte);
+    DBMS_OUTPUT.PUT_LINE('Salário com desconto = ' || v_salario_descontado);
+END;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   
+
+   ##(INTERAÇÃO COM TABELAS: CRUD)##
+
+CREATE TABLE PRODUTO
+(ID INTEGER,
+NOME VARCHAR(30),
+VALOR NUMBER(8,2),
+QTDE INTEGER)
+ 
+ 
+--EXERCICIO 1 - Criar a tabela PRODUTO com:
+id INTEGER, nome VARCHAR(30), valor NUMBER(8,2) e 
+qtde INTEGER.
+
+DECLARE
+    V_ID INTEGER := :ID; 
+    V_NOME PRODUTO.NOME%TYPE := :NOME;
+    V_VALOR PRODUTO.VALOR%TYPE := :VALOR;
+    V_QTDE INTEGER := :QTDE;
+BEGIN
+    INSERT INTO PRODUTO (QTDE, VALOR, NOME, ID)
+    VALUES(V_QTDE, V_VALOR, V_NOME, V_ID);
+    COMMIT;
+END;
+ 
+ 
+--EXERCICIO 2 - Criar um bloco que informe o id e retorne o nome do produto.
+
+DECLARE
+    V_ID INTEGER := :ID;
+    V_NOME PRODUTO.NOME%TYPE;
+BEGIN
+    SELECT NOME
+        INTO V_NOME
+        FROM PRODUTO
+    WHERE ID = V_ID;
+    DBMS_OUTPUT.PUT_LINE(V_ID || ' TEM O PRODUTO ' || V_NOME);
+END;
+ 
+ 
+--EXERCICIO 3 - Criar um bloco que informe o id do produto e deum aumento 5%.
+
+DECLARE
+    v_id INTEGER := :id;
+BEGIN
+    UPDATE produto SET valor = valor * 1.05
+    WHERE id = v_id;
+    COMMIT;
+END;
+ 
+--EXERCICIO 4 - Alterar o bloco 2 para que APÓS a atualização exiba o nome do produto e no novo valor…
+
+DECLARE
+   v_id INTEGER:= :id;
+   v_nome produto.nome%TYPE;
+   v_valor produto.valor%TYPE;
+BEGIN
+ SELECT valor, nome
+  INTO v_valor, v_nome
+  FROM produto
+ WHERE id = v_id;
+   DBMS_OUTPUT.PUT_LINE( v_nome || ' Novo valor: ' || v_valor);
+END;
+ 
+--EXERCICIO 5 - Criar um bloco que informe o id e exclua o produto da tabela.
+
+DECLARE
+  v_id INTEGER:= :id; 
+BEGIN
+  DELETE FROM produto
+  WHERE id = v_id;
+COMMIT;
+END;
+ 
+--EXERCICIO 6 - Criar um bloco que entre com o id do depto. e exiba o nome do depto, a soma salarial e a quantidade de funcionários do depto.
+
+DECLARE 
+    V_ID INTEGER := :ID;
+    V_NOME DEPARTMENTS.DEPARTMENT_NAME%TYPE;
+    V_SOMA NUMBER(10,2);
+    V_QTDE INTEGER;
+BEGIN
+    SELECT D.DEPARTMENT_NAME, SUM(E.SALARY), COUNT(*)
+      INTO V_NOME, V_SOMA, V_QTDE
+      FROM EMPLOYEES E, DEPARTMENTS D
+    WHERE D.DEPARTMENT_ID = V_ID
+    AND D.DEPARTMENT_ID = E.DEPARTMENT_ID
+    GROUP BY D.DEPARTMENT_NAME;
+    DBMS_OUTPUT.PUT_LINE(V_NOME);
+    DBMS_OUTPUT.PUT_LINE('Soma Salarial: ' || V_SOMA);
+    DBMS_OUTPUT.PUT_LINE('Quantidade: ' || V_QTDE);
+END;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+  ##(ESTRUTURA DE CONTROLE)##
+
+
+CREATE TABLE LOOP
+(NUMERO INTEGER,
+TIPO VARCHAR(30));
+ 
+--EXERCICIO 1 - Criar um bloco que de acordo com o id do depto. exiba:
+se for entre 10 e 30: a soma salarial
+se for entre 40 e 60: a média salarial
+se for entre 70 e 90: a qtde de empregados
+Caso contrário, exibir todas as informações: SOMA, MEDIA e QTDE (ELSE)
+Obs. o id dos deptos são 10, 20, 30, 40, 50, 60, 70,80,90,100,110 e assim por diante
+
+DECLARE 
+    V_ID INTEGER := :ID;
+    V_SOMA NUMBER(10,2);
+    V_QTDE INTEGER;
+    V_MEDIA NUMBER(10,2);
+BEGIN
+    SELECT SUM(SALARY), COUNT(*), AVG(SALARY)
+      INTO V_SOMA, V_QTDE, V_MEDIA 
+      FROM EMPLOYEES 
+    WHERE DEPARTMENT_ID = V_ID;
+    IF V_ID BETWEEN 10 AND 30 THEN 
+        DBMS_OUTPUT.PUT_LINE('Soma' || V_SOMA);
+    ELSIF V_ID BETWEEN 40 AND 60 THEN 
+        DBMS_OUTPUT.PUT_LINE('Media' || V_MEDIA);
+    ELSIF V_ID BETWEEN 70 AND 90 THEN 
+        DBMS_OUTPUT.PUT_LINE('Quantidade' || V_QTDE);
+    ELSE
+        DBMS_OUTPUT.PUT_LINE('Soma' || V_SOMA);
+        DBMS_OUTPUT.PUT_LINE('Media' || V_MEDIA);
+        DBMS_OUTPUT.PUT_LINE('Quantidade' || V_QTDE);
+    END IF;
+END;
+ 
+--EXERCICIO 2 - Criar um bloco que insira na tabela loop 10 números (LOOP BÁSICO - incremento com vários valores, além do 1)
+
+DECLARE 
+V_NUM PLS_INTEGER := 1;
+BEGIN
+    LOOP 
+    INSERT INTO LOOP
+    VALUES(V_NUM, 'LOOP BASICO');
+    V_NUM := V_NUM + 1;
+    EXIT WHEN V_NUM > 10;
+    END LOOP;
+    COMMIT;
+END;
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+DECLARE 
+V_NUM PLS_INTEGER := 1;
+BEGIN
+    DELETE FROM LOOP;
+    COMMIT;
+    LOOP 
+    INSERT INTO LOOP
+    VALUES(V_NUM, 'LOOP BASICO');
+    V_NUM := V_NUM + 1;
+    EXIT WHEN V_NUM > 1000;
+    END LOOP;
+    COMMIT;
+END;
+ 
+--EXERCICIO 3 - (WHILE - condição validada no início do bloco)
+
+DECLARE 
+V_NUM PLS_INTEGER := 1;
+BEGIN
+    DELETE FROM LOOP;
+    COMMIT;
+    WHILE V_NUM <= 10000 LOOP
+    INSERT INTO LOOP
+    VALUES(V_NUM, 'while');
+    V_NUM := V_NUM + 1;
+    END LOOP;
+    COMMIT;
+END;
+ 
+--EXERCICIO 4 - (FOR - NÃO PRECISA DECLARAR A VARIÁVEL DE INCREMENTO. INCREMENTO SOMENTE DE 1 EM 1)
+
+DECLARE 
+V_NUM PLS_INTEGER := 1;
+BEGIN
+    DELETE FROM LOOP;
+    COMMIT;
+    FOR I IN 1..100000 LOOP
+    INSERT INTO LOOP
+    VALUES(I, 'FOR');
+    END LOOP;
+    COMMIT;
+END;
+ 
+--EXERCICIO 5 - (FOR REVERSO - DECRESCENTE)
+
+DECLARE 
+V_NUM PLS_INTEGER := 1;
+BEGIN
+    DELETE FROM LOOP;
+    COMMIT;
+    FOR I IN REVERSE 1..10 LOOP
+    INSERT INTO LOOP
+    VALUES(I, 'FOR REVERSE');
+    END LOOP;
+    COMMIT;
+END;

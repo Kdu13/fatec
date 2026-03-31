@@ -1,0 +1,160 @@
+20 DE AGOSTO--
+
+SELECT * FROM SUSPECTS
+/*Suspeito 3*/
+SELECT NAME FROM SUSPECTS WHERE HAIR_COLOR = 'Red' AND EYE_COLOR = 'Blue' 
+AND FEET_SIZE = 'Small' AND TATTOOS = 'Yes' AND AGE > 50 AND GLASSES = 'Yes'
+/*Suspeito 4*/
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Female' AND HEIGHT = 'Tall' 
+AND FACIAL_HAIR = 'Yes' AND GLASSES = 'No' AND SCARS = 'Yes' AND TATTOOS = 'Yes'
+AND FEET_SIZE = 'Large' AND AGE < 30
+ 
+/*Inserindo novos suspeitos*/
+INSERT INTO SUSPECTS VALUES(501,'Josephine Chill', 'Female', 27, 'Tall', 
+'Red', 'Green', 'Yes', 'Yes', 'No', 'Yes', 'Large', null)
+ 
+INSERT INTO SUSPECTS VALUES(502,'Harley Jones', 'Male', 42, 'Medium', 
+'Brown', 'Blue', 'No', 'No', 'No', 'No', 'Medium', null)
+ 
+INSERT INTO SUSPECTS VALUES(503,'Pat Stevenson', 'Male', 19, 'Short', 
+'Green', 'Green', 'Yes', 'Yes', 'No', 'No', 'Large', null)
+ 
+ 
+INSERT INTO SUSPECTS VALUES(4200,'Caio Silva','Male',24, 'Medium', 
+'Brown','Brown', 'No','Yes', 'No','No', 'Medium', null)
+ 
+INSERT INTO SUSPECTS VALUES(666,'Carlos Eduardo','Male',24, 'Medium', 
+'Brown','Brown', 'Yes','No', 'No','No', 'Medium', null)
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male' AND HEIGHT = 'Medium' 
+AND FACIAL_HAIR = 'No' AND GLASSES = 'No' AND SCARS = 'No' AND TATTOOS = 'Yes'
+AND FEET_SIZE = 'Medium' AND AGE < 30
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male' AND HEIGHT = 'Medium' 
+AND FACIAL_HAIR = 'Yes' AND GLASSES = 'No' AND SCARS = 'No' AND TATTOOS = 'No'
+AND FEET_SIZE = 'Medium' AND AGE < 30
+
+SELECT * FROM SUSPECTS
+/*Suspeito 3*/
+SELECT NAME FROM SUSPECTS WHERE HAIR_COLOR = 'Red' AND EYE_COLOR = 'Blue' 
+AND FEET_SIZE = 'Small' AND TATTOOS = 'Yes' AND AGE > 50 AND GLASSES = 'Yes'
+/*Suspeito 4*/
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Female' AND HEIGHT = 'Tall' 
+AND FACIAL_HAIR = 'Yes' AND GLASSES = 'No' AND SCARS = 'Yes' AND TATTOOS = 'Yes'
+AND FEET_SIZE = 'Large' AND AGE < 30
+ 
+/*Inserindo novos suspeitos*/
+INSERT INTO SUSPECTS VALUES(501,'Josephine Chill', 'Female', 27, 'Tall', 
+'Red', 'Green', 'Yes', 'Yes', 'No', 'Yes', 'Large', null)
+ 
+INSERT INTO SUSPECTS VALUES(502,'Harley Jones', 'Male', 42, 'Medium', 
+'Brown', 'Blue', 'No', 'No', 'No', 'No', 'Medium', null)
+ 
+INSERT INTO SUSPECTS VALUES(503,'Pat Stevenson', 'Male', 19, 'Short', 
+'Green', 'Green', 'Yes', 'Yes', 'No', 'No', 'Large', null)
+ 
+ 
+INSERT INTO SUSPECTS VALUES(4200,'Caio Silva','Male',24, 'Medium', 
+'Brown','Brown', 'No','Yes', 'No','No', 'Medium', null)
+ 
+INSERT INTO SUSPECTS VALUES(666,'Carlos Eduardo','Male',24, 'Medium', 
+'Brown','Brown', 'Yes','No', 'No','No', 'Medium', null)
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male' AND HEIGHT = 'Medium' 
+AND FACIAL_HAIR = 'No' AND GLASSES = 'No' AND SCARS = 'No' AND TATTOOS = 'Yes'
+AND FEET_SIZE = 'Medium' AND AGE < 30
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male' AND HEIGHT = 'Medium' 
+AND FACIAL_HAIR = 'Yes' AND GLASSES = 'No' AND SCARS = 'No' AND TATTOOS = 'No'
+AND FEET_SIZE = 'Medium' AND AGE < 30
+
+INSERT INTO SUSPECTS VALUES(4200,'Caio Silva','Male',24, 'Medium', 
+'Brown','Brown', 'No','Yes', 'No','No', 'Medium', null)
+ 
+INSERT INTO SUSPECTS VALUES(666,'Carlos Eduardo','Male',24, 'Medium', 
+'Brown','Brown', 'Yes','No', 'No','No', 'Medium', null)
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male' AND HEIGHT = 'Medium' 
+AND FACIAL_HAIR = 'No' AND GLASSES = 'No' AND SCARS = 'No' AND TATTOOS = 'Yes'
+AND FEET_SIZE = 'Medium' AND AGE < 30
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male' AND HEIGHT = 'Medium' 
+AND FACIAL_HAIR = 'Yes' AND GLASSES = 'No' AND SCARS = 'No' AND TATTOOS = 'No'
+AND FEET_SIZE = 'Medium' AND AGE < 30
+
+SELECT UPPER(r.region_name), LOWER(c.country_name)
+FROM regions r, countries c
+WHERE c.region_id = r.region_id
+ 
+SELECT UPPER(r.region_name), LOWER(c.country_name)
+FROM regions r JOIN countries c
+ON c.region_id = r.region_id
+ 
+SELECT UPPER(r.region_name), LOWER(c.country_name)
+FROM regions r JOIN countries c
+USING (region_id)
+ 
+SELECT UPPER(r.region_name), LOWER(c.country_name)
+FROM regions r NATURAL JOIN countries c
+ 
+SELECT UPPER(r.region_name), LOWER(c.country_name)
+FROM regions r, countries c
+WHERE c.region_id = r.region_id AND r.region_name = 'Europe'
+ 
+Select UPPER(r.region_name), LOWER(c.country_name)
+FROM regions r JOIN countries c
+ON (c.region_id = r.region_id)
+where region_name = 'Europe'
+ 
+SELECT UPPER(r.region_name),LOWER(c.country_name) 
+FROM countries c
+JOIN regions r USING(region_id) WHERE region_name = 'Europe'
+ 
+SELECT r.region_name "Continente",
+    c.country_name País,
+    l.city AS "Cidade"
+FROM regions r, countries c, locations l
+WHERE c.region_id = r.region_id 
+AND l.country_id = c.country_id
+ 
+SELECT d.department_name || ' esta localizado em '
+|| l.city "Localizado Depto"
+FROM departments d, locations l
+WHERE d.location_id = l.location_id
+ 
+SELECT d.department_name || ' esta localizado em '
+|| l.city "Localizado Depto"
+FROM departments d, locations l
+WHERE d.location_id(+) = l.location_id
+ 
+SELECT d.department_name || ' esta localizado em '
+|| l.city "Localizado Depto"
+FROM departments d RIGHT OUTER JOIN locations l
+ON d.location_id = l.location_id
+ 
+SELECT d.department_name || ' esta localizado em '
+|| l.city "Localizado Depto"
+FROM departments d LEFT OUTER JOIN locations l
+USING (location_id)
+ 
+SELECT d.department_name || ' esta localizado em '
+|| l.city "Localizado Depto"
+FROM departments d FULL OUTER JOIN locations l
+USING (location_id)
+ 
+SELECT J.JOB_TITLE || ' tem o funcionario ' || E.FIRST_NAME "CARGOS"
+FROM EMPLOYEES E RIGHT OUTER JOIN JOBS J
+ON (J.JOB_ID = E.JOB_ID)
+ 
+ 
+SELECT first_name || ' ' || last_name, LENGTH(first_name),
+TO_CHAR(salary, '$99,999.99')
+FROM EMPLOYEES
+WHERE salary BETWEEN 5000 AND 15000
+ORDER BY first_name
+ 
+SELECT first_name || ' ' || last_name, LENGTH(first_name),
+TO_CHAR(salary, '$99,999.99')
+FROM EMPLOYEES
+WHERE salary NOT BETWEEN 5000 AND 15000
+ORDER BY salary DESC

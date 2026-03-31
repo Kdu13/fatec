@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+class Estacionamento{
+   public:
+   
+   int dia, horaEntrada, horaSaida;
+   
+   void dados(){
+        cout << "Digite o dia, a hora de entrada e hora de saida: \n";
+        cin >> dia >> horaEntrada >> horaSaida;
+   }
+   
+   int valorFinal(){
+       return (horaSaida - horaEntrada) * 5;
+   }
+       
+};
+
+
+
+
+int main()
+{
+    Estacionamento obj;
+    obj.dados();
+    cout<<obj.valorFinal();
+    
+    return 0;
+}

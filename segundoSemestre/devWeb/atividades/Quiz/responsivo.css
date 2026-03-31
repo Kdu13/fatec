@@ -1,0 +1,250 @@
+@media screen and (max-width: 479px) {
+    body {
+        padding: 10px;
+    }
+
+    .container,
+    .quiz-container,
+    .resultado,
+    .correcao {
+        padding: 15px;
+        margin: 5px auto;
+        border-radius: 12px;
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .pergunta h3 {
+        font-size: 0.95em;
+        line-height: 1.4;
+    }
+
+    .pergunta {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .pergunta label {
+        padding: 10px 12px;
+        font-size: 0.9em;
+        line-height: 1.4;
+    }
+
+    select {
+        padding: 12px;
+        font-size: 0.9em;
+    }
+
+    button,
+    .btn-enviar,
+    .btn-voltar {
+        padding: 12px 20px;
+        font-size: 0.85em;
+        letter-spacing: 0.5px;
+    }
+
+    .resultado h2 {
+        font-size: 1em;
+        margin-bottom: 15px;
+    }
+
+    .questao-correcao {
+        padding: 10px;
+        font-size: 1em;
+    }
+
+    .questao-correcao::before {
+        font-size: 0.4em;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 767px) {
+
+    .container,
+    .quiz-container,
+    .resultado,
+    .correcao {
+        padding: 20px;
+        margin: 10px auto;
+        border-radius: 16px;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin-bottom: 25px;
+    }
+
+    .pergunta {
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+
+    .pergunta h3 {
+        font-size: 1em;
+    }
+
+    .pergunta label {
+        padding: 10px 10px;
+        font-size: 0.5em;
+    }
+
+    select {
+        padding: 13px 15px;
+        font-size: 0.95em;
+    }
+
+    button,
+    .btn-enviar,
+    .btn-voltar {
+        padding: 13px 24px;
+        font-size: 0.9em;
+    }
+
+    .resultado h2 {
+        font-size: 1.6em;
+    }
+
+    .questao-correcao {
+        padding: 18px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 600px;
+        padding: 35px;
+    }
+
+    .quiz-container,
+    .correcao {
+        max-width: 750px;
+        padding: 25px;
+    }
+
+    .resultado {
+        max-width: 500px;
+        padding: 35px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    .pergunta {
+        padding: 20px;
+    }
+
+    .pergunta h3 {
+        font-size: 1.05em;
+    }
+
+    .pergunta label {
+        padding: 12px 15px;
+    }
+
+    select {
+        padding: 14px 16px;
+    }
+
+    button,
+    .btn-enviar,
+    .btn-voltar {
+        padding: 14px 26px;
+        font-size: 0.95em;
+    }
+
+    .resultado h2 {
+        font-size: 1.7em;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1365px) {
+    body {
+        padding: 25px;
+    }
+
+    .container {
+        max-width: 550px;
+        padding: 40px;
+    }
+
+    .quiz-container,
+    .correcao {
+        max-width: 850px;
+        padding: 30px;
+    }
+
+    .resultado {
+        max-width: 500px;
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+    }
+
+    .pergunta {
+        padding: 22px;
+    }
+
+    .pergunta h3 {
+        font-size: 1.1em;
+    }
+
+    .pergunta label {
+        padding: 12px 16px;
+    }
+
+    .resultado h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    body {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .container,
+    .quiz-container,
+    .resultado,
+    .correcao {
+        margin: 10px auto;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+    }
+
+    .pergunta {
+        padding: 15px;
+        margin-bottom: 12px;
+    }
+
+    .pergunta h3 {
+        margin-bottom: 10px;
+    }
+
+    .pergunta label {
+        padding: 8px 12px;
+        margin-bottom: 6px;
+    }
+
+    button,
+    .btn-enviar,
+    .btn-voltar {
+        padding: 10px 20px;
+    }
+}

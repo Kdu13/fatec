@@ -1,0 +1,278 @@
+
+SELECT * FROM CLIENTES
+SELECT * FROM PAGAMENTOS
+SELECT * FROM PACOTES
+SELECT * FROM RESERVAS
+SELECT * FROM DESTINOS
+
+
+CREATE OR REPLACE PROCEDURE mostra_cliente (v_cliente in integer) IS
+    v_nome clientes.nome%type;
+    v_email clientes.email%type;
+    v_telefone clientes.telefone%type; 
+    v_destino destinos.nome_destino%type;
+    cursor c1 is select c.nome,c.email,c.telefone, d.nome_destino from clientes c, 
+    reservas r, pacotes p, destinos d where r.id_cliente = c.id_cliente and 
+    p.id_pacote = r.id_pacote and d.id_destino = p.id_destino and c.id_cliente = v_cliente;
+    begin
+        open c1;
+        loop 
+            fetch c1 into v_nome,v_email,v_telefone,v_destino;
+            exit when c1%notfound;
+            DBMS_OUTPUT.PUT_LINE('Nome: ' || v_nome || chr(13) || 'Email: ' ||v_email || chr(13) || 'Telefone: '|| v_telefone || chr(13) || 'Destino' || v_destino);
+        end loop;
+        close c1;
+    end;
+
+begin 
+mostra_cliente(1);
+end;
+
+
+CREATE OR REPLACE PROCEDURE TOTAL_RESERVAS_CLIENTE (
+    p_id_cliente     IN  Clientes.ID_Cliente%TYPE,
+    p_total_reservas OUT NUMBER
+)
+IS
+BEGIN
+    SELECT COUNT(*)
+    INTO   p_total_reservas
+    FROM   Reservas
+    WHERE  ID_Cliente = p_id_cliente;
+EXCEPTION
+    WHEN OTHERS THEN
+        p_total_reservas := 0;
+END TOTAL_RESERVAS_CLIENTE;
+/
+DECLARE
+    v_id_cliente NUMBER := 10; 
+    v_total      NUMBER;
+BEGIN
+  
+    TOTAL_RESERVAS_CLIENTE(
+        p_id_cliente     => v_id_cliente,
+        p_total_reservas => v_total
+    );
+  
+    DBMS_OUTPUT.PUT_LINE('O cliente ' || v_id_cliente || ' possui ' || v_total || ' reserva(s).');
+END;
+
+
+/*Crie uma procedure chamada RELATORIO_RESERVAS_CLIENTE que, dado o nome de um cliente, liste suas reservas com: nome do pacote, destino, data da reserva e valor total.*/
+
+CREATE OR REPLACE PROCEDURE RELATORIO_RESERVAS_CLIENTE (P_NOME_CLIENTE IN VARCHAR2)
+IS
+BEGIN
+    FOR R IN (
+        SELECT 
+            C.NOME AS NOME_CLIENTE,
+             P.NOME_PACOTE AS NOME_PACOTE,
+            D.NOME_DESTINO AS DESTINO,
+            RSV.DATA_RESERVA,
+            RSV.VALOR_TOTAL
+        FROM CLIENTES C
+        JOIN RESERVAS RSV ON C.ID_CLIENTE = RSV.ID_CLIENTE
+        JOIN PACOTES P ON RSV.ID_PACOTE = P.ID_PACOTE
+        JOIN DESTINOS D ON P.ID_DESTINO = D.ID_DESTINO
+        WHERE UPPER(C.NOME) = UPPER(P_NOME_CLIENTE)
+        ORDER BY RSV.DATA_RESERVA
+    ) LOOP
+        DBMS_OUTPUT.PUT_LINE(
+            'CLIENTE: ' || R.NOME_CLIENTE ||
+            ' | PACOTE: ' || R.NOME_PACOTE ||
+            ' | DESTINO: ' || R.DESTINO ||
+            ' | DATA: ' || TO_CHAR(R.DATA_RESERVA, 'DD/MM/YYYY') ||
+            ' | VALOR TOTAL: R$' || TO_CHAR(R.VALOR_TOTAL, '999G999D99')
+        );
+    END LOOP;
+END;
+ 
+
+BEGIN
+    RELATORIO_RESERVAS_CLIENTE('Ana Clara');
+END;
+
+
+
+create or replace procedure RELATORIO_PAGAMENTOS is
+    v_id_reserva reservas.id_reserva%TYPE;
+    v_valor_total reservas.valor_total%TYPE;
+    v_soma_pagamentos pagamentos.valor_pagamento%TYPE;
+    v_valor_receber number(10,2);
+    cursor c1 is
+        select r.id_reserva, r.valor_total, sum(p.valor_pagamento) 
+         from reservas r, pagamentos p 
+         where r.id_reserva = p.id_reserva 
+         group by r.id_reserva, r.valor_total
+         order by 1;
+begin
+    open c1;
+    loop
+        fetch c1 into v_id_reserva, v_valor_total, v_soma_pagamentos;
+        v_valor_receber := v_valor_total-v_soma_pagamentos;
+        exit when c1%NOTFOUND;
+        if v_soma_pagamentos = 0 then
+            dbms_output.put_line('ID da Reserva: '||v_id_reserva||' | Não houve pagamentos, valor a receber: '||v_valor_receber);
+        else 
+            dbms_output.put_line('ID da Reserva: '||v_id_reserva||' | Valor pago: '||v_soma_pagamentos||' | valor a receber: '||v_valor_receber);
+        end if;
+    end loop;
+    close c1;
+end;
+
+
+
+CREATE OR REPLACE PROCEDURE INSERE_RESERVA(
+    P_ID_CLIENTE     IN RESERVAS.ID_CLIENTE%TYPE,
+    P_ID_PACOTE      IN RESERVAS.ID_PACOTE%TYPE,
+    P_NUMPESSOAS     IN RESERVAS.NUMERO_PESSOAS%TYPE
+) IS
+    V_PRECO          PACOTES.PRECO_POR_PESSOA%TYPE;
+    V_VALORTOTAL     NUMBER(10,2);
+BEGIN
+    SELECT PRECO_POR_PESSOA
+    INTO V_PRECO
+    FROM PACOTES
+    WHERE ID_PACOTE = P_ID_PACOTE;
+ 
+    V_VALORTOTAL := V_PRECO * P_NUMPESSOAS;
+ 
+    INSERT INTO RESERVAS (ID_CLIENTE, ID_PACOTE, NUMERO_PESSOAS, VALOR_TOTAL)
+    VALUES (P_ID_CLIENTE, P_ID_PACOTE, P_NUMPESSOAS, V_VALORTOTAL);
+ 
+    COMMIT;
+END;
+
+
+CREATE OR REPLACE PROCEDURE pacotes_por_destino (p_nome_destino IN VARCHAR2) IS
+NomePacote VARCHAR2(150);
+DataInicio DATE;
+DataFim DATE;
+PrecoPorPessoa NUMBER(10,2);
+CURSOR c1 IS SELECT p.nome_pacote, p.data_inicio, p.data_fim, p.preco_por_pessoa
+    FROM pacotes p, destinos d
+    WHERE p.id_destino = d.id_destino
+    AND d.nome_destino = p_nome_destino;
+BEGIN
+    OPEN c1;
+        LOOP
+            FETCH c1 INTO NomePacote, DataInicio, DataFim, PrecoPorPessoa;
+            EXIT WHEN c1%NOTFOUND;
+            DBMS_OUTPUT.PUT_LINE('O destino ' || p_nome_destino || ' está presente no pacote: ' || NomePacote || ' | Data de início: ' || DataInicio || ' | Data fim: ' || DataFim || ' | Preço por pessoa: ' || PrecoPorPessoa);
+        END LOOP;
+    CLOSE c1;
+END;
+BEGIN pacotes_por_destino('Paris'); END;
+BEGIN pacotes_por_destino('Tóquio'); END;
+BEGIN pacotes_por_destino('Roma'); END;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PACKAGES E TRIGGERS
+
+
+CREATE OR REPLACE PACKAGE PK_EMP
+IS
+    PROCEDURE PRC_EMP(V_ID IN INTEGER);
+    PROCEDURE PRC_DEPT(V_DEPT IN INTEGER);
+END;
+
+CREATE OR REPLACE PACKAGE PK_EXERCICIO
+IS
+    PROCEDURE PRC_RESUMO(V_ID IN INTEGER);
+END;
+
+
+CREATE OR REPLACE PACKAGE BODY PK_EMP
+IS
+    FUNCTION FNC_COM(V_SAL IN NUMBER, V_PERC IN NUMBER)
+    RETURN NUMBER
+    IS
+        V_COMISSAO NUMBER(10,2);
+    BEGIN
+        V_COMISSAO := V_SAL * NVL(V_PERC,0);
+    RETURN (V_COMISSAO);
+    END FNC_COM;
+    PROCEDURE PRC_EMP(V_ID IN INTEGER)
+    IS
+        V_NOME EMPLOYEES.FIRST_NAME%TYPE;
+        V_CARGO VARCHAR(20);
+    BEGIN
+        SELECT E.FIRST_NAME, J.JOB_TITLE INTO V_NOME, V_CARGO
+        FROM EMPLOYEES E NATURAL JOIN JOBS J
+        WHERE E.EMPLOYEE_ID = V_ID;
+        DBMS_OUTPUT.PUT_LINE
+        (V_NOME||' TRABALHA COMO '|| V_CARGO);
+    END PRC_EMP;
+    PROCEDURE PRC_DEPT(V_DEPT IN INTEGER) IS
+    V_SOBRENOME VARCHAR(20);
+    V_SALARIO NUMBER(10,2);
+    V_COM NUMBER(10, 2);
+    V_PERCENTUAL NUMBER(10,2);
+    CURSOR C1 IS 
+        SELECT LAST_NAME, SALARY, COMMISSION_PCT
+            FROM EMPLOYEES WHERE DEPARTMENT_ID = V_DEPT;
+    BEGIN
+     OPEN C1;
+     LOOP 
+      FETCH C1 INTO V_SOBRENOME, V_SALARIO, V_PERCENTUAL;
+      EXIT WHEN C1%NOTFOUND;
+      V_COM := FNC_COM(V_SALARIO, V_PERCENTUAL);
+      DBMS_OUTPUT.PUT_LINE (V_SOBRENOME||' RECEBE '||V_SALARIO||' E DE COMISSAO '||V_COM);
+      END LOOP;
+      CLOSE C1;
+      END PRC_DEPT;
+END;
+
+
+
+CONSULTAR:
+SELECT TEXT FROM USER_SOURCE WHERE NAME = 'PK_EMP' 
+
+
+BEGIN 
+    PK_EMP.PRC_EMP(123);
+END;
+
+BEGIN
+    PK_EMP.PRC_DEPT(90);
+END;
+
+DROP PACKAGE BODY PK_EMP;
+
+DROP PACKAGE PK_EMP;
+
+-------------------------------------------------------------------------------------------------------------------
+
+/*Criar um pacote chamada pk_exercicio que tenha uma procedure chamada prc_resumo que informe o id do depto e
+ exiba a soma salarial e a quantidade de empregados.*/
+
+CREATE OR REPLACE PACKAGE PK_EXERCICIO IS
+    PROCEDURE PRC_RESUMO(VD_ID_DEPT IN INTEGER);
+END;
+ 
+CREATE OR REPLACE PACKAGE BODY PK_EXERCICIO IS
+ 
+    PROCEDURE PRC_RESUMO(VD_ID_DEPT IN INTEGER) IS
+        V_TOTAL_SAL NUMBER(10,2);
+        V_QTD_EMP   NUMBER(10);
+    BEGIN
+        SELECT SUM(SALARY), COUNT(EMPLOYEE_ID)
+        INTO V_TOTAL_SAL, V_QTD_EMP
+        FROM EMPLOYEES
+        WHERE DEPARTMENT_ID = VD_ID_DEPT;
+ 
+        DBMS_OUTPUT.PUT_LINE('DEPARTAMENTO ID: ' || VD_ID_DEPT);
+        DBMS_OUTPUT.PUT_LINE('TOTAL SALARIAL: ' || NVL(V_TOTAL_SAL, 0));
+        DBMS_OUTPUT.PUT_LINE('QUANTIDADE DE EMPREGADOS: ' || V_QTD_EMP);
+    END PRC_RESUMO;
+ 
+END PK_EXERCICIO;
+
+ 
+SELECT TEXT FROM USER_SOURCE WHERE NAME = 'PK_EMP';
+ 
+BEGIN 
+    PK_EXERCICIO.PRC_RESUMO(90);
+END;
+

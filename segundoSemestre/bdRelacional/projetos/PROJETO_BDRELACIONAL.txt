@@ -1,0 +1,191 @@
+Criar as tabelas relacionadas com o script de inserção dos registros;
+
+
+CREATE TABLE CLIENTES (
+  id_cliente INTEGER PRIMARY KEY,
+  nome VARCHAR(100),
+  telefone VARCHAR(20),
+  email VARCHAR(100)
+);
+
+CREATE TABLE ANIMAIS (
+  id_animal INTEGER PRIMARY KEY,
+  nome_animal VARCHAR(50),
+  especie VARCHAR(50),
+  raca VARCHAR(50),
+  id_cliente NUMBER REFERENCES CLIENTES(id_cliente)
+);
+
+CREATE TABLE VETERINARIOS (
+  id_vet INTEGER PRIMARY KEY,
+  nome_vet VARCHAR(100),
+  especialidade_vet VARCHAR(100)
+);
+
+CREATE TABLE CONSULTAS (
+  id_consulta INTEGER PRIMARY KEY,
+  id_animal INTEGER REFERENCES ANIMAIS(id_animal),
+  id_vet INTEGER REFERENCES VETERINARIOS(id_vet),
+  data_consulta DATE,
+  valor_consulta NUMBER(10,2)
+);
+
+CREATE TABLE PAGAMENTOS (
+  id_pagamento INTEGER PRIMARY KEY,
+  id_consulta INTEGER REFERENCES CONSULTAS(id_consulta),
+  forma_pagamento VARCHAR(20),
+  valor_pago NUMBER(10,2)
+);
+
+
+INSERT INTO CLIENTES VALUES (1, 'Carlos Silva', '1199999-8888', 'carlos@gmail.com');
+INSERT INTO CLIENTES VALUES (2, 'Ana Souza', '1198888-7777', 'ana@gmail.com');
+
+INSERT INTO ANIMAIS VALUES (1, 'Rex', 'Cachorro', 'Labrador', 1);
+INSERT INTO ANIMAIS VALUES (2, 'Mimi', 'Gato', 'Siamês', 2);
+
+INSERT INTO VETERINARIOS VALUES (1, 'Dr. João', 'Clínico Geral');
+INSERT INTO VETERINARIOS VALUES (2, 'Dra. Paula', 'Dermatologia');
+
+INSERT INTO CONSULTAS VALUES (1, 1, 1, TO_DATE('2025-10-10','YYYY-MM-DD'), 200);
+INSERT INTO CONSULTAS VALUES (2, 2, 2, TO_DATE('2025-10-12','YYYY-MM-DD'), 250);
+
+INSERT INTO PAGAMENTOS VALUES (1, 1, 'Crédito', 200);
+INSERT INTO PAGAMENTOS VALUES (2, 2, 'Pix', 250);
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Criar uma subquerie;
+
+
+SELECT c.id_consulta, a.nome_animal AS animal, c.valor_consulta
+FROM CONSULTAS c
+JOIN ANIMAIS a ON c.id_animal = a.id_animal
+WHERE c.valor_consulta > (
+  SELECT AVG(valor_consulta) FROM CONSULTAS
+);
+
+
+Exemplo de saída:
+
+ ID_CONSULTA | ANIMAL | VALOR_CONSULTA 
+ -------------------------------------
+ 2           | Mimi   | 250.00 
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Criar uma function para o estudo de caso;
+
+
+CREATE OR REPLACE FUNCTION APLICAR_DESCONTO(
+  v_valor NUMBER,
+  v_percentual NUMBER
+) RETURN NUMBER IS
+BEGIN
+  RETURN v_valor - (v_valor * v_percentual / 100);
+END;
+
+
+Exemplo de uso:
+
+SELECT 
+  c.id_consulta,
+  a.nome_animal AS animal,
+  v.nome_vet AS veterinario,
+  c.valor_consulta AS valor_original,
+  aplicar_desconto(c.valor_consulta, 10) AS valor_com_desconto
+FROM CONSULTAS C
+JOIN ANIMAIS A ON c.id_animal = a.id_animal
+JOIN VETERINARIOS V ON c.id_vet = v.id_vet;
+
+
+Exemplo de saída:
+
+ ID_CONSULTA | ANIMAL | VETERINARIO | VALOR_ORIGINAL | VALOR_COM_DESCONTO 
+ ------------------------------------------------------------------------
+ 1           | Rex    | Dr. João    | 200.00         | 180.00             
+ 2           | Mimi   | Dra. Paula  | 250.00         | 225.00             
+      
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+Criar uma procedure que tenha cursor explicito, junção de tabelas e exception;
+
+CREATE OR REPLACE PROCEDURE relatorio_consultas_com_pagamento IS
+  CURSOR c_relatorio IS
+    SELECT 
+      cli.nome          AS nome_cliente,
+      ani.nome_animal   AS nome_animal,
+      vet.nome_vet      AS nome_veterinario,
+      con.data_consulta,
+      con.valor_consulta,
+      pag.forma_pagamento,
+      pag.valor_pago
+    FROM consultas con
+    JOIN animais ani ON con.id_animal = ani.id_animal
+    JOIN clientes cli ON ani.id_cliente = cli.id_cliente
+    JOIN veterinarios vet ON con.id_vet = vet.id_vet
+    LEFT JOIN pagamentos pag ON con.id_consulta = pag.id_consulta
+    ORDER BY con.data_consulta;
+
+  v_cliente clientes.nome%TYPE;
+  v_animal animais.nome_animal%TYPE;
+  v_vet veterinarios.nome_vet%TYPE;
+  v_data DATE;
+  v_valor NUMBER;
+  v_forma_pagamento pagamentos.forma_pagamento%TYPE;
+  v_valor_pago NUMBER;
+
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('--- RELATÓRIO DE CONSULTAS COM PAGAMENTOS ---');
+  DBMS_OUTPUT.PUT_LINE(' ');
+
+  OPEN c_relatorio;
+
+  LOOP
+    FETCH c_relatorio INTO 
+      v_cliente, v_animal, v_vet, v_data, v_valor, v_forma_pagamento, v_valor_pago;
+
+    EXIT WHEN c_relatorio%NOTFOUND;
+
+    DBMS_OUTPUT.PUT_LINE(
+      'Cliente: ' || v_cliente ||
+      ' | Animal: ' || v_animal ||
+      ' | Veterinário: ' || v_vet ||
+      ' | Data: ' || TO_CHAR(v_data, 'DD/MM/YYYY') ||
+      ' | Valor: R$' || TO_CHAR(v_valor, '9990.00') ||
+      ' | Pagamento: ' || NVL(v_forma_pagamento, 'NÃO REGISTRADO') ||
+      ' | Valor Pago: R$' || NVL(TO_CHAR(v_valor_pago, '9990.00'), '0.00')
+    );
+  END LOOP;
+
+  CLOSE c_relatorio;
+
+EXCEPTION
+  WHEN NO_DATA_FOUND THEN
+    DBMS_OUTPUT.PUT_LINE('Nenhuma consulta encontrada.');
+  WHEN OTHERS THEN
+    DBMS_OUTPUT.PUT_LINE('Erro ao gerar relatório: ' || SQLERRM);
+END;
+
+
+Exemplo de uso:
+
+BEGIN
+  relatorio_consultas_com_pagamento;
+END;
+
+
+Exemplo de saída:
+
+--- RELATÓRIO DE CONSULTAS COM PAGAMENTOS ---
+
+Cliente: Carlos Silva | Animal: Rex | Veterinário: Dr. João | Data: 10/10/2025 | Valor: R$200.00 | Pagamento: Crédito | Valor Pago: R$200.00
+Cliente: Ana Souza | Animal: Mimi | Veterinário: Dra. Paula | Data: 12/10/2025 | Valor: R$250.00 | Pagamento: Pix | Valor Pago: R$250.00

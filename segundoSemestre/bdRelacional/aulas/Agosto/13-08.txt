@@ -1,0 +1,13 @@
+13 DE AGOSTO--
+
+create table gangs(gang_id number (1) primary key, name_gang varchar2(20) not null, criminal_speciality varchar2(20),symbol_gang varchar2(20) not null)
+ 
+ALTER TABLE SUSPECTS ADD gang_affiliation NUMBER(1)
+ 
+ALTER TABLE SUSPECTS ADD CONSTRAINT suspects_gang_fk FOREIGN KEY(gang_affiliation) REFERENCES GANGS(gang_id)
+ 
+ALTER TABLE GANGS MODIFY CRIMINAL_SPECIALITY VARCHAR(100)
+ALTER TABLE GANGS MODIFY SYMBOL_GANG VARCHAR(100)
+ 
+SELECT NAME FROM SUSPECTS WHERE SEX = 'Male'
+AND SCARS = 'Yes' AND (HAIR_COLOR = 'Brown' OR HAIR_COLOR = 'Black') AND FEET_SIZE = 'Large' AND AGE BETWEEN 50 AND 60 AND GLASSES = 'Yes'

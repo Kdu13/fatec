@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+class Matematica{
+    public:
+    
+    int a, b;
+    
+    // void setA(int a){
+    //     this->a = a;
+    // }
+    
+    // int getA(){
+    //     return a;
+    // }
+    
+    // void setB(int b){
+    //     this->b = b;
+    // }
+    
+    // int getB(){
+    //     return b;
+    // }
+    
+    
+    void dados(){
+        cout << "Digite valores para a e b\n";
+        cin >> a >> b;
+    }
+    
+    int soma(){
+        return a + b;
+    }
+    
+    int subtracao(){
+        return a - b;
+    }
+    
+    int multiplicacao(){
+        return a * b;
+    }
+    
+    int divisao(){
+        
+        if(a < b){
+            return b / a;
+        }
+        else{
+            return a / b;
+        }
+    }
+       
+};
+
+
+
+
+int main()
+{
+    Matematica obj;
+    obj.dados();
+    cout<<"O resultado e: "<<obj.soma()<<"\n";
+    
+    
+    return 0;
+}

@@ -1,0 +1,72 @@
+17 DE SETEMBRO--
+
+/* Criar um índice chamada idx_nome para a coluna first_name da tabela EMPLOYEES */
+CREATE INDEX IDX_NOME ON EMPLOYEES(FIRST_NAME)
+ 
+/* Consultar os índices no dicionário de dados */
+SELECT * FROM USER_INDEXES
+ 
+SELECT * FROM USER_IND_COLUMNS
+ 
+/* Exibir o nome (FIRST_NAME) de todos empregados da tabela EMPLOYEES */
+SELECT FIRST_NAME, LAST_NAME FROM EMPLOYEES
+WHERE FIRST_NAME IS NOT NULL
+ 
+/* Excluir o índice */
+DROP INDEX IDX_NOME
+ 
+/* Criar a tabela CLIENTES com id INTEGER PRIMARY KEY, nm_cliente VARCHAR(30) */
+CREATE TABLE clientes
+(id INTEGER PRIMARY KEY,
+nome VARCHAR(30))
+ 
+/* Criar a tabela PRODUTO com cd_produto INTEGER PRIMARY KEY, nm_produto */
+CREATE TABLE PRODUTOS
+(id INTEGER PRIMARY KEY,
+nome VARCHAR(30))
+ 
+/* Criar uma sequência chamada seq_cliente que inicie em 2 com incremento 2 
+e valor máximo de 2000 e sem valores na memória cache */
+CREATE SEQUENCE SEQ_CLIENTE
+START WITH 2
+INCREMENT BY 2
+MAXVALUE 2000
+NOCACHE
+ 
+/* Consultar a sequência criada */
+SELECT * FROM USER_SEQUENCES
+ 
+ 
+/* Utilizar a sequência criada para inserir 2 registros em cada tabela */
+ 
+INSERT INTO CLIENTES 
+VALUES(SEQ_CLIENTE.NEXTVAL, 'Zeus')
+ 
+INSERT INTO CLIENTES 
+VALUES(SEQ_CLIENTE.NEXTVAL, 'Kratos')
+ 
+SELECT * FROM CLIENTES
+ 
+INSERT INTO PRODUTOS 
+VALUES(SEQ_CLIENTE.NEXTVAL, 'Espada do Olimpo')
+ 
+ALTER SEQUENCE SEQ_CLIENTE
+INCREMENT BY 5
+ 
+INSERT INTO PRODUTOS 
+VALUES(SEQ_CLIENTE.NEXTVAL, 'Lamina do Caos')
+ 
+SELECT * FROM PRODUTOS
+ 
+DROP SEQUENCE SEQ_CLIENTE
+ 
+/* SEQUENCE: objeto criado para gerar números exclusivos que poderão ser
+usados para chave primária. Obs. sublinhado é o default. Sintaxe */
+CREATE SEQUENCE nomeSequencia
+START WITH NÚMERO (PADRÃO 1)
+INCREMENT BY NÚMERO (PADRÃO 1)
+MINVALUE NÚMERO (PADRÃO 1)
+MAXVALUE NÚMERO (PADRÃO 10^27)
+ORDER|NOORDER
+NOCACHE|CACHE NÚMERO(por default 20)
+CYCLE|NOCYCLE

@@ -1,0 +1,52 @@
+Enviar o script que retrate os dois exercicios, que já foram feito em sala de aula (resolução no documento compartilhado). Reescreva usando o conceito de REGISTROS. 
+
+
+a) Criar um bloco anônimo que informe o id do depto e exiba o nome do empregado e o título do seu cargo dos funcionários que trabalham neste depto. TESTE: 10, 20, 30, 40, 50, 60, 70
+
+DECLARE
+    v_depto NUMBER := :DEPTO;
+    TYPE r_funcionario IS RECORD (
+        nome employees.first_name%TYPE,
+        cargo jobs.job_title%TYPE
+    );
+    v_reg r_funcionario;
+    CURSOR c_func IS
+        SELECT e.first_name, j.job_title
+        FROM employees e
+        JOIN jobs j ON e.job_id = j.job_id
+        WHERE e.department_id = v_depto;
+BEGIN
+    OPEN c_func;
+    LOOP
+        FETCH c_func INTO v_reg;
+        EXIT WHEN c_func%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_reg.nome || ' trabalha como ' || v_reg.cargo);
+    END LOOP;
+    CLOSE c_func;
+END;
+
+
+b) Criar um bloco que entre com o id do cargo e exiba o sobrenome dos funcionários que possuem este cargo(EMPLOYEES: last_name, job_id)job_id STRING com todas letras maiúsculas: ST_CLERK, IT_PROG, SA_REP
+
+DECLARE
+    v_cargo VARCHAR2(10) := UPPER(:CARGO);
+
+    TYPE r_emp IS RECORD (
+        sobrenome employees.last_name%TYPE
+    );
+
+    v_reg r_emp;
+
+    CURSOR c_emp IS
+        SELECT last_name
+        FROM employees
+        WHERE job_id = v_cargo;
+BEGIN
+    OPEN c_emp;
+    LOOP
+        FETCH c_emp INTO v_reg;
+        EXIT WHEN c_emp%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE(v_reg.sobrenome);
+    END LOOP;
+    CLOSE c_emp;
+END;

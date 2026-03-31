@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Orbitron:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa', sans-serif;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #fbbf24 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(30, 58, 138, 0.2),
+        0 0 30px rgba(251, 191, 36, 0.15);
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    font-weight: 700;
+    background: linear-gradient(45deg, #1e3a8a, #fbbf24, #1e40af);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.categoria-form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    color: #1e3a8a;
+    font-weight: 600;
+}
+
+select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1em;
+    border: 2px solid rgba(30, 58, 138, 0.2);
+    border-radius: 12px;
+    margin-bottom: 20px;
+    background: linear-gradient(145deg, #f8fafc, #ffffff);
+    font-family: 'Comfortaa', sans-serif;
+    transition: all 0.3s ease;
+    color: #1e3a8a;
+}
+
+select:focus {
+    outline: none;
+    border-color: #fbbf24;
+    box-shadow: 0 0 0 4px rgba(251, 191, 36, 0.15);
+    transform: scale(1.02);
+}
+
+button {
+    background: linear-gradient(135deg, #1e3a8a 0%, #fbbf24 100%);
+    color: white;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Comfortaa', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30, 58, 138, 0.3);
+}
+
+.quiz-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(30, 58, 138, 0.2),
+        0 0 30px rgba(251, 191, 36, 0.15);
+    max-width: 800px;
+    margin: 20px auto;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.pergunta {
+    background: linear-gradient(145deg, rgba(251, 191, 36, 0.05), rgba(30, 58, 138, 0.05));
+    padding: 24px;
+    margin-bottom: 20px;
+    border-radius: 16px;
+    border-left: 5px solid #fbbf24;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.pergunta:hover {
+    transform: translateY(-2px);
+}
+
+.pergunta h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: #1e3a8a;
+    margin-bottom: 16px;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.pergunta label {
+    display: block;
+    margin-bottom: 8px;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    border: 1px solid rgba(30, 58, 138, 0.1);
+    font-weight: 400;
+    position: relative;
+}
+
+
+.pergunta label:hover {
+    background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(30, 64, 175, 0.1));
+    border-color: #fbbf24;
+    box-shadow: 0 3px 10px rgba(251, 191, 36, 0.2);
+}
+
+
+.btn-enviar {
+    background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+    padding: 16px 32px;
+    font-size: 1.1em;
+    margin-top: 24px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-enviar:hover {
+    box-shadow: 0 8px 20px rgba(5, 150, 105, 0.3);
+}
+
+.resultado {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(30, 58, 138, 0.2),
+        0 0 30px rgba(251, 191, 36, 0.15);
+    max-width: 450px;
+    margin: 10px auto;
+    text-align: center;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.resultado h2 {
+    font-family: 'Orbitron', sans-serif;
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.8em;
+    background: linear-gradient(45deg, #1e3a8a, #fbbf24);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-voltar {
+    display: inline-block;
+    background: linear-gradient(135deg, #fbbf24 0%, #1e40af 100%);
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 12px;
+    margin-top: 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Comfortaa', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-voltar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(251, 191, 36, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.correcao {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 
+        0 20px 40px rgba(30, 58, 138, 0.2),
+        0 0 30px rgba(251, 191, 36, 0.15);
+    max-width: 700px;
+    margin: 5px auto;
+    border: 2px solid rgba(251, 191, 36, 0.3);
+}
+
+.questao-correcao {
+    padding: 20px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    border-left: 5px solid;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.questao-correcao::before {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+
+.questao-correcao:hover {
+    transform: translateY(-1px);
+}
+
+.questao-correcao.correta {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(52, 211, 153, 0.1));
+    border-left-color: #10b981;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.1);
+}
+
+
+.questao-correcao.incorreta {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(248, 113, 113, 0.1));
+    border-left-color: #ef4444;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.1);
+}

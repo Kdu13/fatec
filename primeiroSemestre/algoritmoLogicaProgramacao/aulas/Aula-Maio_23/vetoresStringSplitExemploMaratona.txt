@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("");
+            string texto = Console.ReadLine();
+            //string texto = "10 20 30 40 50"
+            string[] valores = texto.Split(' ');
+            int valor_total = 0;
+            foreach (string valor in valores)
+            {
+                valor_total += Convert.ToInt32(valor);
+            }
+            Console.WriteLine(valor_total);
+            Console.ReadKey();
+        }
+    }
+}

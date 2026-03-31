@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="Projeto_Banco_Dados_Logico" id="BA89D6FB-B74A-6EEB-E6E7-A3E8BC284ADD" version="3.5">
+<createdBy>Carlos Eduardo</createdBy>
+<createdTime>2025-06-05 02:17:32 UTC</createdTime>
+<ownerDesignName>Projeto_Banco_Dados_Logico</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>BA89D6FB-B74A-6EEB-E6E7-A3E8BC284ADD</designId>
+</OSDM_Design>

@@ -1,0 +1,11 @@
+NOTA_FISCAL = 
+@ cd_nota_fiscal
++ dt_nota_fiscal
++ nm_cliente
++ (cd_inscricao_estadual_cliente)
++ [cd_cnpj_cliente/cd_cpf_cliente]
++ {qt_material_nota_fiscal
++ nm_material
++ vl_unitario_material
++ vl_total_material_nota_fiscal}
++ vl_total_nota_fiscal

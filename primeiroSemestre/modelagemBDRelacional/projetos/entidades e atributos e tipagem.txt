@@ -1,0 +1,41 @@
+(entidade forte)
+PLAYER
+id_player (PK) – INTEGER
+nm_player – VARCHAR(100)
+nm_email_player – VARCHAR(100)
+
+
+ (entidade forte)
+CHARACTER
+id_character (PK) – INTEGER
+nm_character – VARCHAR(100)
+qt_level_character – INTEGER
+nm_race_character – VARCHAR(50)
+id_class (FK) – INTEGER→ CLASS 
+id_player (FK) – INTEGER→ PLAYER 
+
+📌 Relacionamento 1:N – Um jogador pode ter vários personagens.
+
+ (entidade forte)
+CLASS
+id_class (PK) – INTEGER
+nm_class – VARCHAR(50)
+ds_class – CLOB
+
+📌 Relacionamento 1:N – Uma classe pode estar associada a vários personagens.
+
+ (entidade forte)
+SESSION
+id_session (PK) – INTEGER
+dt_session – DATE
+ds_session– CLOB
+
+
+(tabela associativa)
+CHARACTER_SESSION
+nm_role - VARCHAR(50)
+id_character  (FK) – INTEGER → CHARACTER
+id_session  (FK) – INTEGER→ SESSION
+character_session_pk (id_character, id_session)
+
+📌 Relacionamento N:N – Um personagem pode participar de várias sessões, e uma sessão pode ter vários personagens.

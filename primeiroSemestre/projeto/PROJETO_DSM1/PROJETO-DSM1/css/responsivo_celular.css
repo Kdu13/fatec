@@ -1,0 +1,108 @@
+@media (max-width: 600px) {
+  .cabecalho > .container-fluid{
+    height: 100px;
+  }
+  .cabecalho>section>a>img{
+    display: none !important;
+  }
+  .cabecalho > section > nav{
+    justify-content: space-between;
+    
+  }
+  .cabecalho > section > nav > a {
+    margin: 0 10px !important;
+    font-size: 0.8em !important;
+    
+  }
+  .informacao_footer > div > div > h2 {
+    text-align: center !important;
+  }
+  .link_contato{
+    display: none;
+  }
+  .informacao_footer > div > div > ul > li {
+    text-align: center !important;
+  }
+  .informacao_footer > div > .barra_vertical_servico{
+    border: none !important;
+  }
+  .informacao_footer > div > .barra_vertical{
+    border: none !important;
+  }
+  .informacao_footer > div > div > #map{
+    width: 100% !important;
+  }
+  .redes_pagamentos {
+    flex-direction: column !important;
+    font-size: 1.3em !important;
+  }
+  .redes_pagamentos  > .redes{
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+  .contato-container {
+    flex-direction: column !important;
+  }
+  .contato-container > aside {
+    display: none !important;
+  }
+  .imagem_sobre {
+    margin: 0 !important;
+    background-color: transparent !important;
+  }
+  .titulo_principal{
+    font-size: 1em !important;
+  }
+  .titulo_secundario{
+    font-size: 0.8em !important;
+  }
+  .carousel-indicators {
+    display: none !important;
+  }
+
+  #carouselExampleIndicators > div {
+    height: 50% !important;
+    margin: 30px 0 !important;
+  }
+
+  .row.g-3 > .col-sm-3 {
+    flex: 0 0 50% !important; 
+    max-width: 50% !important;
+  }
+
+.col-sm-6.col-md-3 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+  }
+
+
+  .container_menu_lateral_vendas {
+    display: none !important;
+  }
+
+  .box_cards_index{
+    flex-direction: column;
+  }
+  .box_card_index{
+    box-shadow:  0 0 5px rgba(0,0,0,0.5);
+    width: 80vw;
+  }
+  .texto_sobre > p {
+    width: 80vw;
+  }
+  .imagem_sobre{
+    display: none;
+  }
+  .mapa_box{
+    display: none;
+  }
+   .imgfixa {
+    display: none;
+}
+.card{
+  box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+.formulario_contato {
+  min-width: 80%;
+}
+}

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDU</title>
+    <style>
+        div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid lightskyblue;
+            box-shadow: 5px 5px 10px gray;
+        }
+ 
+        label {
+            font-weight: bold;
+        }
+ 
+        input {
+            border-radius: 10px;
+            padding: 10px;
+            margin: 5px;
+        }
+ 
+        button {
+            background-color: lightskyblue;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: 5px 5px 10px gray;
+        }
+        p{
+            color: blue;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div>
+        <h1>Centena, Dezena e Unidade</h1>
+ 
+        <form onsubmit="calcularCDU(event)">
+            <label>Digite um número de 3 digítos: </label>
+            <input type="number" min="0" max="999" id="num"><br>
+            <button>Calcular</button>
+        </form>
+ 
+        <p id="result"></p>
+    </div>
+ 
+    <script>
+        function calcularCDU(event) {
+            event.preventDefault();
+            const numero = document.getElementById("num").value;
+            const resultado = document.getElementById("result");
+            const centena = parseInt(numero / 100);
+            const dezena = parseInt((numero % 100) / 10);
+            const unidade = parseInt(numero % 10);
+            resultado.innerHTML = "Centena: " + centena + "<br>Dezena: " + dezena + "<br>Unidade: " + unidade;
+        }
+    </script>
+</body>
+ 
+</html>

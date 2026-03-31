@@ -1,0 +1,37 @@
+h1 {
+    color: rgb(255, 0, 0);
+    text-align: center;
+}
+
+strong {
+    font-style: italic;
+    color: blue;
+}
+
+#sombra{
+    text-shadow: 5px 5px 7px black;
+}
+
+.paragrafo{
+    text-align: justify;
+    font-family: Verdana, arial, "arial black";
+    line-height: 30px;
+    text-indent: 50px;
+    font-size: 15px;
+}
+
+div p{
+    background-color: rgb(186, 179, 189);
+    margin: 50px;
+    padding: 30px;
+    box-shadow: 5px 5px 5px black;
+    border-radius: 20px;
+    /* border-style: double;
+    border-width: 5px;
+    border-color: blue; */
+    border: 5px double blue;
+}
+
+#cor{
+    background-color: aquamarine;
+}

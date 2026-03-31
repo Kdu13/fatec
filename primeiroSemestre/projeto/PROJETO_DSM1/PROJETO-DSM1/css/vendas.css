@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.menu_lateral_vendas {
+    padding-top: 3em;
+}
+
+.menu_lateral_vendas_lista>.titulo_vendas_lateral>a {
+    color: rgb(33, 33, 33);
+    text-decoration: none;
+    font-family: "Old_Standart_TT";
+    font-weight: 700;
+    font-size: 1.0em;
+    margin-left: 1em;
+    margin-top: 2em;
+}
+
+.menu_lateral_vendas_lista>.titulo_vendas_lateral>a:hover {
+    text-decoration: underline;
+}
+
+.menu_lateral_vendas_lista>ul>li>a {
+    color: rgb(90, 90, 90);
+    text-decoration: none;
+    font-family: "Old_Standart_TT";
+    font-weight: 700;
+    font-size: 0.8em;
+    margin-left: 2rem;
+}
+
+.menu_lateral_vendas_lista>ul>li>a:hover {
+    color: black;
+}
+
+.card {
+    border: 1px solid rgba(45, 45, 45, 0.5);
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card:hover {
+    box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-body a {
+    margin-top: auto;
+}
+
+.btn_venda {
+    width: 100%;
+    background: linear-gradient(45deg, rgb(86, 159, 255), rgb(66, 125, 202));
+    color: white;   
+}
+
+.btn_venda:hover {
+    background: linear-gradient(45deg, rgb(66, 125, 202),rgb(86, 159, 255));
+    color: white;
+    box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+
+
+.placeholder-card {
+    opacity: 0.6;
+    border-style: dashed;
+}
+
+.placeholder-card:hover {
+    box-shadow: none;
+}

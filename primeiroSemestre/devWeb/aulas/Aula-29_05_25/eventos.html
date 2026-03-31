@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eventos DOM JS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 300px;
+    }
+
+    .card img {
+      display: block;
+      width: 50%;
+      border-radius: 10px;
+      margin: auto;
+    }
+
+    .card h2 {
+      margin: 10px 0 5px;
+      text-align: center;
+    }
+
+    .card p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    .componente {
+      margin-bottom: 10px;
+    }
+
+    .card label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .card input[type="text"],
+    .card select {
+      width: 100%;
+      padding: 5px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    p.preco {
+      color: orangered;
+    }
+
+    .card button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background: orangered;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card" id="card">
+    <img src="https://bognarjunior.wordpress.com/wp-content/uploads/2018/01/1crcyaithv7aiqh1z93v99q.png?w=256"
+      alt="Produto">
+    <h2>Curso de Javascript</h2>
+    <p class="preco">R$ 399,99</p>
+
+    <div class="componente">
+      <label for="usuario">Usuário:</label>
+      <input type="text" id="usuario" placeholder="seu nome aqui" oninput="this.value = this.value.toUpperCase()">
+    </div>
+
+    <div class="componente">
+      <label for="quantidade">Quantidade:</label>
+      <input type="text" id="quantidade" placeholder="somente números" onkeydown="verifica(event)">
+    </div>
+
+    <button id="btnComprar" onclick="comprar()" onmouseover="alterarCor1()"
+      onmouseleave="alterarCor2(this)">Comprar</button>
+  </div>
+
+  <script>
+    const comprar = () => {
+      // alert("Produto add ao carrinho")
+      const usuario = document.getElementById("usuario").value;
+      const quantidade = document.getElementById("quantidade").value;
+
+
+      const div = document.createElement("div");
+      div.style.position = "fixed";
+      div.style.top = "0";
+      div.style.right = "0";
+      div.classList.add("card");
+      
+      const user = document.createElement("p");
+      user.textContent = "Usuário: " + usuario;
+      div.appendChild(user);
+      
+      const qnt = document.createElement("p");
+      qnt.textContent = "Quantidade: " + quantidade;
+      div.appendChild(qnt);
+
+      document.body.appendChild(div);
+    }
+
+    const alterarCor1 = () => {
+      const btnComprar = document.getElementById("btnComprar");
+      btnComprar.style.backgroundColor = "orange";
+    }
+
+    const alterarCor2 = (btnComprar) => {
+      // const btnComprar = document.getElementById("btnComprar");
+      btnComprar.style.backgroundColor = "orangered";
+    }
+
+
+    const card = document.getElementById("card");
+    let contador = 0;
+    let contador2 = 0;
+    let movimentos = 0;
+
+    const inserirBorda = () => {
+      card.style.border = "2px solid orangered";
+      console.log(++contador)
+    }
+
+    card.addEventListener('mouseenter', inserirBorda);
+
+    card.addEventListener('mouseout', () =>{
+      card.style.border = "none";
+      console.log(contador2 += 3)
+    });
+
+    card.addEventListener('mousemove', function () {
+      console.log(movimentos += 2);
+    });
+
+    const verifica = (event) =>{
+      const tecla = event.keyCode;
+
+      const numeros = (tecla >= 48 && tecla <= 57) || (tecla >= 96 && tecla <= 105);
+      
+      const teclasPermitidadas = [8, 37, 39, 46];
+
+      if(!numeros && !teclasPermitidadas.includes(tecla)){
+        event.preventDefault();
+      }
+    }
+
+    
+
+  </script>
+
+</body>
+
+</html>

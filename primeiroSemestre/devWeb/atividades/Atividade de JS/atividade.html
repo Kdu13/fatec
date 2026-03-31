@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atividade JS</title>
+</head>
+<body>
+    <script>
+        let num;
+        let dezena, centena, unidade;
+        
+        num = parseInt(prompt("Digite seu número: "));
+        let num_original = num
+        
+        if(num <= 0 || num >= 1000){
+            document.write("Digite um número menor que 1000 e maior que 0<br>");
+        }
+        else{
+            centena = Math.floor(num / 100)
+            num = num - (centena * 100)
+            dezena = Math.floor(num / 10)
+            num = num - (dezena * 10)
+            unidade = num
+        }
+        document.write("Número total: " + num_original + "<br>Centena: " + centena + "<br>Dezena: " + dezena + "<br>Unidade: " + unidade);
+    </script>
+</body>
+</html>

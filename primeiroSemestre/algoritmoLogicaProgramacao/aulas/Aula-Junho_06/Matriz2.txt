@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string[,] matriz = new string[5, 2];
+
+            for (int l = 0; l < 5; l++)
+            {
+                for (int c = 0; c < 2; c++)
+                {
+                    if (c == 0 )
+                    {
+                        Console.Write($"Adicionar Nome: ");
+                        matriz[l, c] = Console.ReadLine();
+                    } else
+                    {
+                        Console.Write($"Adicionar a Posição: ");
+                        matriz[l, c] = Console.ReadLine();
+                    }
+                    
+                }
+            }
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine("Mostrando os pilotos e suas posições:");
+            Console.WriteLine("--------------------------------------------------");
+
+
+            Console.WriteLine($"Piloto: {matriz[0, 0]} e Posição: {matriz[0, 1]}");
+            Console.WriteLine($"Piloto: {matriz[1, 0]} e Posição: {matriz[1, 1]}");
+            Console.WriteLine($"Piloto: {matriz[2, 0]} e Posição: {matriz[2, 1]}");
+            Console.WriteLine($"Piloto: {matriz[3, 0]} e Posição: {matriz[3, 1]}");
+            Console.WriteLine($"Piloto: {matriz[4, 0]} e Posição: {matriz[4, 1]}");
+
+            Console.WriteLine("--------------------------------------------------");
+
+            Console.WriteLine("Fim");
+
+            Console.ReadKey();
+        }
+    }
+}

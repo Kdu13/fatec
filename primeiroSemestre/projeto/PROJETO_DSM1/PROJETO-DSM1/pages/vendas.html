@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../assets/icons/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="../assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/fonts.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/vendas.css">
+    <link rel="stylesheet" href="../css/responsivo_computador.css">
+    <link rel="stylesheet" href="../css/responsivo_intermediario.css">
+    <link rel="stylesheet" href="../css/responsivo_celular.css">
+    <title>R.E Assistência técnica | Loja</title>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <section class="container-fluid d-flex p-3">
+            <a href="../index.html">
+                <img src="../assets/imagens/logo/logo.png" alt="logo">
+            </a>
+            <nav class="nav w-100">
+                <a class="flex-sm-fill text-sm-center" href="../index.html">Inicio</a>
+                <a class="flex-sm-fill text-sm-center" href="sobre.html">Sobre</a>
+                <a class="flex-sm-fill text-sm-center" role="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">Serviços</a>
+                <a class="ativo flex-sm-fill text-sm-center" href="#">Loja</a>
+                <a class="flex-sm-fill text-sm-center link_contato" href="contato.html">Contato</a>
+            </nav>
+        </section>
+
+        <div class="offcanvas offcanvas-start menu_lateral" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class=" offcanvas-header menu_lateral_header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Serviços</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+            </div>
+            <div class="offcanvas-body menu_lateral_body">
+                <ul class="list-unstyled">
+
+                    <li class="titulo_vendas_lateral">Celulares e Tablets</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="servicos/celular_tablet/troca_tela.html">Troca de tela</a></li>
+                        <li><a href="servicos/celular_tablet/troca_bateria.html">Troca de bateria</a></li>
+                        <li><a href="servicos/celular_tablet/conector_carga.html">Conectores de carga</a>
+                        </li>
+                        <li><a href="servicos/celular_tablet/att_formatacao.html">Atualizações e
+                                formatação</a></li>
+                        <li><a href="servicos/celular_tablet/manutencao_geral.html">Outras manutenções
+                                gerais</a></li>
+                    </ul>
+
+                    <li class="titulo_vendas_lateral">Notebooks e PCs</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="servicos/note_pc/formatacao_instalacao.html">Formatação e instalação de
+                                sistemas</a></li>
+                        <li><a href="servicos/note_pc/limpeza_manuntencao.html">Limpeza e manutenção
+                                preventiva</a></li>
+                        <li><a href="servicos/note_pc/troca_pecas.html">Troca de peças (HD, SSD, memória
+                                etc.)</a></li>
+                        <li><a href="servicos/note_pc/diagnostico_reparos.html">Diagnóstico e reparos em
+                                hardware</a></li>
+                        <li><a href="servicos/note_pc/otimizacao.html">Otimização de desempenho</a></li>
+                    </ul>
+
+                    <li class="titulo_vendas_lateral">Marketing e Design</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="servicos/marketing_design/criacao_artes.html">Criação de artes</a></li>
+                        <li><a href="servicos/marketing_design/gestao_redes_sociais.html">Gestão de redes
+                                sociais</a></li>
+                        <li><a href="servicos/marketing_design/gestao_trafego_pago.html">Gestão de tráfego
+                                pago</a></li>
+                    </ul>
+
+                    <li class="titulo_vendas_lateral">Suporte Remoto</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="servicos/suporte_remoto/instalacao_programas.html">Instalação de
+                                programas</a></li>
+                        <li><a href="servicos/suporte_remoto/config_otimizacao.html">Configurações e
+                                otimizações</a></li>
+                        <li><a href="servicos/suporte_remoto/ajuda_softwares.html">Ajuda com softwares
+                                específicos</a></li>
+                    </ul>
+                </ul>
+
+            </div>
+        </div>
+
+    </header>
+
+    <main class="principal">
+        <section class="conteudo_vendas d-flex">
+            <div class="container_menu_lateral_vendas ">
+                <div class="menu_lateral_vendas">
+                    <div class="menu_lateral_vendas_conteudo">
+                        <p style="font-weight: 500; text-align: center;">Menu de acesso rápido</p>
+                        <ul class="menu_lateral_vendas_lista list-unstyled">
+
+                            <li class="titulo_vendas_lateral"><a href="#">Películas</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#">Película 3D</a></li>
+                                <li><a href="#">Película Ceramica </a></li>
+                                <li><a href="#">Película Privacidade 3D</a></li>
+                                <li><a href="#">Película Gel</a></li>
+                                <li><a href="#pelicula_de_gel_tablet">Película Gel para Tablet</a></li>
+                                <li><a href="#pelicula_de_gel_tablet">Película de Câmera iPhone</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#cabo">Cabos</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#cabo">Cabo v8 iPhone Tipo C Kaid</a></li>
+                                <li><a href="#cabo">Cabo Hmaston</a></li>
+                                <li><a href="#cabo">Cabo 3m Hmaston</a></li>
+                                <li><a href="#cabo">Cabo V3</a></li>
+                                <li><a href="#cabo_V3">Cabo iPhone Tipo C</a></li>
+                                <li><a href="#cabo_V3">Cabo Tipo C/ Tipo C</a></li>
+                                <li><a href="#cabo_V3">Cabo HTMI x AV</a></li>
+                                <li><a href="#cabo_V3">Cabo HTMI 2 metros</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#capinha">Capinhas</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#capinha">Capinha Case</a></li>
+                                <li><a href="#capinha">Capinha Carteira</a></li>
+                                <li><a href="#capinha">Capinha Space</a></li>
+                                <li><a href="#capinha">Capinha iPhone Vidro</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#fone">Fones</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#fone">Fone (saquinho)</a></li>
+                                <li><a href="#fone">Fone de Caixinha Lelong</a></li>
+                                <li><a href="#fone">Fone sem fio Kaid</a></li>
+                                <li><a href="#fone">Fone sem fio Hmaston</a></li>
+                                <li><a href="#fone_sem_fio_hmaston">Fone Gamer</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#periferico">Periféricos</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#periferico">Mouse sem fio recarregável</a></li>
+                                <li><a href="#periferico">Mouse com fio</a></li>
+                                <li><a href="#periferico">Teclado para PC com fio</a></li>
+                                <li><a href="#periferico">Base para Notebook</a></li>
+                                <li><a href="#base_notebook">Fonte Notebook Universal</a></li>
+                                <li><a href="#base_notebook">Fonte Original Notebook</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#armazenamento">Armazenamentos</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#armazenamento">Cartão de Memória 64 GB</a></li>
+                                <li><a href="#armazenamento">Cartão de Memória 128 GB</a></li>
+                                <li><a href="#armazenamento">Pendrive 64 GB</a></li>
+                                <li><a href="#armazenamento">Pendrive 128 GB</a></li>
+                                <li><a href="#pendrive_128gb">SSD</a></li>
+                                <li><a href="pendrive_128gb">SSD NVME M.2</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#carregador">Carregadores</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#carregador">Carregador Kaid Turbo TipoC</a></li>
+                                <li><a href="#carregador">Carregador Kaid Turbo V8</a></li>
+                                <li><a href="#carregador">Fonte Veicular Hmaston</a></li>
+                            </ul>
+
+                            <li class="titulo_vendas_lateral"><a href="#diverso">Diversos</a></li>
+                            <ul class="caixa_links_lateral list-unstyled">
+                                <li><a href="#diverso">Suporte de Carro e Moto</a></li>
+                                <li><a href="#diverso">Mini Teclado TV Box</a></li>
+                                <li><a href="#diverso">Tripé com Selfie</a></li>
+                                <li><a href="#diverso">Controle TV Box</a></li>
+                            </ul>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <section class="container-fluid" style="width: 80%; text-align: center;">
+
+                <div class="container">
+                    <div class="row">
+
+                        <h1 class="mt-4">Películas</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/peliculas/pelicula-3d.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Película 3D</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20uma%20película%203D"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/peliculas/ceramica_privacidade.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Película Ceramica Privacidade</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20uma%20película%20ceramica%20privacidade"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/peliculas/pelicula_privacidade_3d.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Película Privacidade 3D</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20uma%20película%20privacidade%203D"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/peliculas/pelicula_de_gel_celular.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Película Gel</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20uma%20película%20Gel"
+                                        target="_blank">
+                                        <button id="pelicula_de_gel_tablet" type="button" class="btn btn_venda">Entre em
+                                            contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/peliculas/pelicula_de_gel_tablet.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Película Gel para Tablet</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20uma%20película%20gel%20para%20tablet"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/peliculas/pelicula_camera_iphone.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Película de Câmera para iPhone</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20uma%20película%20de%20Câmera%20para%20iPhone"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button id="cabo" type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <h1>Cabos</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-v8-iphoneTipo C-Kaidi.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo v8 iPhone Tipo C Kaid</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20um%20cabo%20v8%20iPhone%20tipoC%20Kaid"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-hmaston.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo Hmaston</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20um%20cabo%20Hmaston"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-3m-hmaston.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo 3m Hmaston</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20um%20cabo%203m%20Hmaston"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-V3.png" class="card-img-top"
+                                        alt="Imagem 1">
+                                    <h5 class="card-title">Cabo V3</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20um%20cabo%20V3"
+                                        target="_blank">
+                                        <button id="cabo_V3" type="button" class="btn btn_venda">Entre em contato agora
+                                            pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-iphone-tipo C.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo iPhone Tipo C</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20cabo%20iPhone%20tipoC"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato agora
+                                            pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-tipoC-tipoC.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo Tipo C/ Tipo C</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20cabo%20tipoC%20tipoC"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo hdmi x av.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo HTMI x AV</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20cabo%20HTMI%20x%20AV"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/cabos/cabo-hdmi-2-metros.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cabo HTMI 2 metros</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20cabo%20HTMI%202m"
+                                        target="_blank">
+                                        <button id="capinha" type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <h1>Capinhas</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/capinhas/capinha_case.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Capinha Case (consultar)</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Capinha%20Case%20(consultar%20modelo%20e%20cores)"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/capinhas/capinhas_carteira.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Capinha Carteira</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Capinha%20Carteira"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/capinhas/capinha_space.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Capinha Space</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Capinha%20Space"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/capinhas/capinha_iphone_vidro.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Capinha iPhone Vidro</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Capinha%20iPhone%20Vidro"
+                                        target="_blank">
+                                        <button id="fone" type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1>Fone</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/fones/fone_capinha.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fone (saquinho)</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fone%20(saquinho)"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/fones/fone_caixinha_lelong.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fone de Caixinha Lelong</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fone%20de%20Caixinha%20Lelong"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/fones/fone_sem_fio_kaid.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fone sem fio Kaid</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fone%20sem%20fio%20Kaid"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/fones/fone_sem_fio_hmaston.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fone sem fio Hmaston</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fone%20sem%20fio%20Hmaston"
+                                        target="_blank">
+                                        <button id="fone_sem_fio_hmaston" type="button" class="btn btn_venda">Entre em
+                                            contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/fones/fone_gamer.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fone Gamer</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fone%20Gamer"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button id="periferico" type="button" class="btn btn-secondary" disabled>Novo
+                                        produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1>Periféricos</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/perifericos/mouse_sem_fio_recarregavel.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Mouse sem fio recarregável</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Mouse%20sem%20fio%20recarregável"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/perifericos/mouse_com_fio.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Mouse com fio</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Mouse%20com%20fio"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/perifericos/teclado_com_fio.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Teclado para PC com fio</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Teclado%20para%20PC%20com%20fio"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/perifericos/base_refrigerada_para_notebook.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Base Refrigerada para Notebook</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Base%20Refrigerada%20para%20Notebook"
+                                        target="_blank">
+                                        <button id="base_notebook" type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/perifericos/fonte_notebook_universal.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fonte Notebook Universal</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fonte%20Notebook%20Universal"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/perifericos/fontes_originais_notebook.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fonte Original Notebook (consultar)
+                                    </h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fonte%20Original%20Notebook%20(consultar%20modelo)"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button id="armazenamento" type="button" class="btn btn-secondary" disabled>Novo
+                                        produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1>Armazenamento</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/armazenamento/cartao_memoria_64gb.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cartão de Memória 64 GB</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Cartão%20de%20Memória%2064%20GB"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/armazenamento/cartao_memoria_128gb.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Cartão de Memória 128 GB</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Cartão%20de%20Memória%20128%20GB"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/armazenamento/pendrive_64gb.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Pendrive 64 GB</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Pendrive%2064%20GB"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/armazenamento/pendrive_128gb.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Pendrive 128 GB</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Pendrive%20128%20GB"
+                                        target="_blank">
+                                        <button id="pendrive_128gb" type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/armazenamento/ssd_sata.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">SSD ( 120 / 240 / 480 / 1TB / 2TB )</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20SSD%20(120%20/%20240%20/%20480%20/%201TB%20/%202TB)"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/armazenamento/ssd_nvme_m.2.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">SSD NVME M.2</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20SSD%20NVME%20M.2"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button id="carregador" type="button" class="btn btn-secondary" disabled>Novo
+                                        produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1>Carregadores</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/carregadores/carregador-kaidi-turbo-20W-tipo-c.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Carregador Kaid Turbo 20w TipoC</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Carregador%20Kaid%20Turbo%2020w%20TipoC"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/carregadores/carregador-kaidi-turbo-20W-tipo-v8.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Carregador Kaid Turbo 20w V8</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Carregador%20Kaid%20Turbo%2020w%20V8"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/carregadores/fonte-veicular-hmaston.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Fonte Veicular Hmaston</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Fonte%20Veicular%20Hmaston"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card placeholder-card">
+                                <div class="card-body text-center">
+                                    <img src="../assets/imagens/em_breve/em_breve_quadrado.png" class="card-img-top"
+                                        alt="Em breve">
+                                    <h5 class="card-title">Em breve</h5>
+                                    <button id="diverso" type="button" class="btn btn-secondary" disabled>Novo produto
+                                        chegando</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h1>Diversos</h1>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/diversos/suporte_celular_carro_e_moto.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Suporte de Carro e Moto</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Suporte%20de%20Carro%20e%20Moto"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/diversos/mini_teclado_tv_box.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Mini Teclado TV Box</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Mini%20Teclado%20TV%20Box"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/diversos/tripe_selfie.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Tripé com Selfie</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Tripé%20com%20Selfie"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3 mb-5">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="../assets/imagens/imagens_vendas/diversos/controle_tv_box.png"
+                                        class="card-img-top" alt="Imagem 1">
+                                    <h5 class="card-title">Controle TV Box</h5>
+                                    <a href="https://wa.me/5513991290815?text=Olá%2C%20tudo%20bem%3F%20Gostaria%20de%20comprar%20Controle%20TV%20Box"
+                                        target="_blank">
+                                        <button type="button" class="btn btn_venda">Entre em contato
+                                            agora pelo
+                                            WhatsApp</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <footer class="rodape container-fluid">
+        <section class="principal_footer">
+            <section class="informacao_footer container pt-5 pb-5">
+                <div class="row text-center align-items-center">
+
+                    <div class="col-12 col-md-3 mb-3 mb-md-0">
+                        <a href="../index.html">
+                            <img src="../assets/imagens/logo/logo.png" alt="logo" class="img-fluid">
+                        </a>
+                    </div>
+
+
+                    <div class="col-12 col-md-3 mb-3 mb-md-0 barra_vertical_servico">
+                        <h2>Serviços</h2>
+                        <ul class="list-unstyled">
+                            <li class="list-group-item"><a href="../pages/servicos/celular_tablet/troca_tela.html">Troca
+                                    de
+                                    Tela</a>
+                            </li>
+                            <li class="list-group-item"><a
+                                    href="../pages/servicos/celular_tablet/troca_bateria.html">Troca
+                                    de
+                                    Bateria</a></li>
+                            <li class="list-group-item"><a href="../pages/servicos/note_pc/troca_pecas.html">Troca de
+                                    Peças PC</a></li>
+                            <li class="list-group-item"><a
+                                    href="../pages/servicos/note_pc/formatacao_instalacao.html">Formatação</a></li>
+                            <li class="list-group-item"><a
+                                    href="../pages/servicos/marketing_design/gestao_trafego_pago.html">Gestão de
+                                    Tráfego Pago</a></li>
+                            <li class="list-group-item"><a
+                                    href="../pages/servicos/marketing_design/criacao_artes.html">Criação de Artes</a>
+                            </li>
+                            <li class="list-group-item"><a
+                                    href="../pages/servicos/suporte_remoto/ajuda_softwares.html">Ajuda com
+                                    Softwares</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3 mb-3 mb-md-0 barra_vertical">
+                        <h2>Saiba Mais</h2>
+                        <ul class="list-unstyled">
+                            <li class="list-group-item"><a href="../pages/sobre.html">Sobre a R.E Assistência</a></li>
+                            <li class="list-group-item"><a href="https://www.instagram.com/caiorafasdad/"
+                                    target="_blank">Dicas de Manutenção</a></li>
+                            <li class="list-group-item"><a
+                                    href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20vim%20do%20site%2C%20gostaria%20de%20um%20suporte!"
+                                    target="_blank">Suporte via WhatsApp</a></li>
+                            <li class="list-group-item"><a href="../pages/vendas.html">Loja</a></li>
+                            <li class="list-group-item"><a href="#">Blog / Novidades</a></li>
+                            <li class="list-group-item"><a href="#">Termos e Condições</a></li>
+                            <li class="list-group-item"><a href="#">Política de Privacidade</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <h2>Mapa</h2>
+                        <div id="map" style="height: 220px; width: 120%;"></div>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <section class="redes_pagamentos container-fluid d-flex justify-content-around pt-5 pb-5">
+                <div class="redes d-flex flex-column">
+                    <p class="me-2">Redes Sociais</p>
+                    <section>
+                        <a class="me-3 instagram" href="https://www.instagram.com/caiorafasdad/" target="_blank"
+                            style="background: linear-gradient(45deg, #ff00bf, #FF421F); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">Instagram
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <a class="me-3"
+                            href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Eu%20vim%20do%20site%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+                            target="_blank"
+                            style="background: linear-gradient(45deg, lightgreen, green); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">WhatsApp
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/caiopintor.s" target="_blank"
+                            style="background: linear-gradient(45deg, rgb(0, 140, 255), rgb(0, 0, 255)); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">Facebook
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </section>
+                </div>
+                <div class="pagamentos d-flex flex-column">
+                    <p class="me-2">Formas de Pagamento</p>
+                    <section>
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/visa.png" alt="Visa">
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/mastercard2.png" alt="Mastercard">
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/elo.png" alt="Elo">
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/hipercard.png" alt="Hypercard">
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/americanexpress.png"
+                            alt="American Express">
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/samsungpay.png" alt="Samsung Pay">
+                        <img class="mb-1" src="../assets/imagens/icones_pagamento/googlepay.png" alt="Google Pay">
+                        <i class="fab fa-pix mt-1 me-2" style="color: rgba(0, 255, 255, 0.55);"></i>
+                        <i class="fa-solid fa-barcode mt-1 me-2"
+                            style="background: linear-gradient(-45deg, rgb(230, 230, 230), rgb(150, 150, 150)); -webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i>
+                    </section>
+                </div>
+            </section>
+
+            <section class="direitos_autorais pt-3 pb-1">
+                <p>&copy;2025 R.E Assistência técnica | Todos os direitos reservados.</p>
+            </section>
+        </section>
+    </footer>
+    <section>
+
+        <a href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Eu%20vim%20do%20site%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+            target="_blank">
+            <img src="../assets/imagens/logo_whats.png" alt="Imagem fixa" class="imgfixa">
+        </a>
+        <div id="loadingOverlay">
+            <div class="spinner"></div>
+        </div>
+
+    </section>
+    <script src="../assets/jquery/jquery.min.js"></script>
+    <script src="../assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../js/index.js"></script>
+</body>
+
+</html>

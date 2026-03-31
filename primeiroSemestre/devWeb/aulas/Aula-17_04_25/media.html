@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media</title>
+</head>
+<body>
+
+
+
+
+    <script>   
+        let nome;
+        let nota1;
+        let nota2;
+        let media;
+
+        nome = prompt("Digite seu nome: ", "seu nome aqui");
+        document.write("Olá, " + nome + "<br>");
+        
+        nota1 = parseFloat(prompt("Digite sua nota: ", "sua nota aqui"));
+        document.write("Nota 1: " + nota1 + " - " + typeof nota1 + "<br>");
+        
+        nota2 = prompt("Digite sua nota: ", "sua nota aqui");
+        document.write("Nota 2: " + nota2 + " - " + typeof nota2 + "<br>");
+
+        media = (nota1 + parseFloat(nota2)) / 2;
+        document.write("Sua media é igual a: " + media);
+    </script>
+</body>
+</html>

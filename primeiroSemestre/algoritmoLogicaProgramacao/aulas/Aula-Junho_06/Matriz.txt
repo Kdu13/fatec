@@ -1,0 +1,42 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[,] matriz =  new int[3,3];
+
+            for(int l = 0; l < 3; l++)
+            {
+                for(int c = 0; c < 3; c++)
+                {
+                    Console.Write($"Adicionar Valor {l}, {c}:");
+                    matriz[l, c] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+            
+            Console.WriteLine("Mostrando os valores:");
+
+           /**for (int l = 0; l < 3; l++)
+            {
+                for (int c = 0; c < 3; c++)
+                {
+                    Console.WriteLine($"Valores: {matriz[l, c]}");
+                }
+            }**/
+
+            foreach(int valor in matriz)
+            {
+                Console.WriteLine($"Valores: {valor}");
+            }
+
+            Console.ReadKey();
+        }
+    }
+}

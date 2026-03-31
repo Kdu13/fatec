@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Folha de Pagamento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Folha de Pagamento</h1>
+    <section class="container">
+        <form>
+            <div class="formulario">
+                <label for="nome">Nome do Funcionário:</label>
+                <input type="text" id="nome" placeholder="Seu nome aqui..." />
+            </div>
+
+            <div class="formulario">
+                <label for="Cargo">Cargo:</label>
+                <select id="Cargo">
+                    <option value="">Selecione</option>
+                    <option value="9000">Analista de Dados - R$ 9000</option>
+                    <option value="15000">Engenheiro de Software - R$ 15000</option>
+                    <option value="12000">Programador Back-End - R$ 12000</option>
+                    <option value="8000">Programador Front-End - R$ 8000</option>
+                    <option value="5000">Designer UX/UI - R$ 5000</option>
+                    <option value="18000">Cientista de Dados - R$ 18000</option>
+                    <option value="16000">Engenheiro DevOps - R$ 16000</option>
+                    <option value="11000">Adm de Banco de Dados - R$ 11000</option>
+                    <option value="20000">Arquiteto de Software - R$ 20000</option>
+                    <option value="14000">Especialista em Segurança da Informação - R$ 14000</option>
+                </select>
+            </div>
+
+            <div class="formulario">
+                <label>Benefícios:</label>
+                <label>
+                    <input type="checkbox" class="Beneficios" value="300"> Vale-Transporte (+ R$ 300.00)
+                </label>
+                <label>
+                    <input type="checkbox" class="Beneficios" value="400"> Plano de Saúde (+ R$ 400.00)
+                </label>
+            </div>
+
+            <div class="formulario">
+                <label>Tipo de Contrato:</label>
+                <label>
+                    <input type="radio" name="tipo_contrato" value="20" class="tipo_contrato"> CLT (Desconto 20%)
+                </label>
+                <label>
+                    <input type="radio" name="tipo_contrato" value="5" class="tipo_contrato"> PJ (Desconto 5%)
+                </label>
+            </div>
+
+
+
+
+            <button type="button" onclick="calcular()">Calcular Folha</button>
+        </form>
+
+    </section>
+    <div class="resultado" id="resultado"></div>
+
+
+    <section>
+        <p></p>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

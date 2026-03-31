@@ -1,0 +1,36 @@
+.box_card_pages{
+    width: 60%;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    
+}
+.box_card_pages:hover{
+    box-shadow: 0 0 5px rgba(33, 33, 33, 0.5);
+    
+}
+.card-title{
+    text-align: center;
+    color: #198ADF;
+    font-size: 2em;
+    font-weight: 700;
+}
+.card-text{
+    margin-left: 10%;
+    width: 80%;
+}
+
+.btn_pages{
+    font-size: 1em;
+    font-weight: 700;
+    width: 80%;
+    margin: 0 10%;
+    background: linear-gradient(45deg, rgb(86, 159, 255), rgb(66, 125, 202));
+    color: white;
+}
+
+.btn_pages:hover {
+    color: rgb(33, 33, 33);
+    background: linear-gradient(45deg, rgb(66, 125, 202), rgb(86, 159, 255));
+    color: white;
+
+}

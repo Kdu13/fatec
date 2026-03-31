@@ -1,0 +1,36 @@
+.conteudo_sobre {
+    max-width: 80%;
+}
+
+.texto_sobre {
+    font-weight: 300;
+    padding: 2.5em;
+    font-size: 1.3rem;
+    line-height: 1.6;
+}
+
+.titulo_sobre {
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.card-text{
+    color: rgb(45,45,45);
+    font-weight: 300;
+    text-indent: 3em;
+    text-align: justify;
+}
+.imagem_sobre{
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .conteudo_sobre {
+        flex-direction: column;
+    }
+    .imagem_sobre {
+        flex: 0 0 auto;
+        width: 50%;
+        margin-top: 1.5em;
+    }
+}

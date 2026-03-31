@@ -1,0 +1,204 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    height: 100%;
+}
+
+.cabecalho {
+    background-color: rgb(33, 33, 33);
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    border-bottom: 3px solid #198ADF;
+}
+
+.cabecalho>section {
+    width: 80%;
+}
+
+.cabecalho>section>a>img {
+    height: 80px;
+    margin-right: 3%;
+}
+
+.cabecalho>section>nav {
+    align-items: center;
+}
+
+.cabecalho>section>nav>a {
+    text-decoration: none;
+    color: white;
+    font-family: "Old_Standart_TT";
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+.cabecalho>section>nav>.ativo {
+    text-decoration: overline;
+    color: #198ADF;
+}
+
+.cabecalho>section>nav>a:hover {
+    color: #198ADF;
+}
+
+.menu_lateral {
+    background-color: white;
+    font-family: "Old_Standart_TT";
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.menu_lateral>.menu_lateral_header {
+    background: linear-gradient(to bottom right, rgb(33, 33, 33), rgb(45, 45, 45));
+    color: white;
+    height: 11.7%;
+}
+
+.menu_lateral>.menu_lateral_body>ul>.titulo_vendas_lateral {
+    font-weight: 400;
+    color: rgb(45, 45, 45);
+    margin-top: 1em;
+}
+
+.menu_lateral>.menu_lateral_body>ul>.caixa_links_lateral>li>a {
+    text-decoration: none;
+    color: rgb(45, 45, 45);
+    font-weight: 300;
+    font-size: 16px;
+    margin: 0 1em;
+}
+
+.menu_lateral>.menu_lateral_body>ul>.caixa_links_lateral>li>a:hover {
+    color: black;
+}
+
+.principal {
+    background-color: white;
+    font-family: "Old_Standart_TT";
+    font-weight: 700;
+    font-size: 1.3em;
+}
+
+.rodape {
+    background: linear-gradient(to top right, rgb(33, 33, 33), rgb(45, 45, 45));
+    font-family: "Old_Standart_TT";
+    font-weight: 700;
+    font-size: 1em;
+    justify-items: center;
+}
+
+.rodape>.principal_footer {
+    width: 80%;
+    color: white;
+}
+
+.rodape>.principal_footer>.informacao_footer {
+    padding: 0;
+    margin: 0;
+}
+
+.rodape>.principal_footer>.informacao_footer>div>div>h2 {
+    text-align: left;
+    margin-left: 15px;
+    font-size: 1.8em;
+}
+
+.rodape>.principal_footer>.informacao_footer>div>div>ul>li {
+    text-align: left;
+    background-color: transparent;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+.rodape>.principal_footer>.informacao_footer>div>.barra_vertical {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.rodape>.principal_footer>.informacao_footer>div>.barra_vertical_servico {
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.rodape>.principal_footer>.informacao_footer>div>div>ul>li>a {
+    text-decoration: none;
+    color: white;
+}
+
+.rodape>.principal_footer>.informacao_footer>div>div>ul>li>a:hover {
+    color: rgb(220, 220, 220);
+}
+
+.rodape>.principal_footer>.redes_pagamentos {
+    justify-content: center;
+    font-size: 1.5em;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.rodape>.principal_footer>.redes_pagamentos>div>p {
+    text-align: center;
+}
+
+.rodape>section>.direitos_autorais {
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Old_Standart_TT";
+    font-weight: 400;
+    text-align: center;
+}
+.redes, .pagamentos > .me-2 {
+    color: #198ADF;
+    font-weight: 500;
+}
+
+.imgfixa {
+    width: 60px;
+    position: fixed;
+    right: 2em;
+    bottom: 2em;
+    z-index: 9998;
+}
+
+
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+
+
+  .spinner {
+    width: 50px;
+    height: 50px;
+    border: 6px solid #ccc;
+    border-top-color: #198ADF;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg) }
+  }
+
+
+  #loadingOverlay.hidden {
+    display: none;
+  }
+
+
+  h1,h2, .titulo_principal{
+     color: #198ADF;
+  }

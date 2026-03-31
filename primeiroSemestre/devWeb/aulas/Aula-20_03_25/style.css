@@ -1,0 +1,78 @@
+.menufixo{
+    position: sticky;
+    top: 0;
+    background-color: black;
+    margin: auto;
+    text-align: center;
+    padding: 20px;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+}
+
+a:hover{
+    color: rgb(97, 248, 97);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.imgfixa{
+    width: 200px;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.boxtexto{
+    background-color: rgb(143, 253, 143);
+    height: 150px;
+    overflow: auto;
+    margin-top: 10px;
+    padding: 15px;
+    text-align: justify;
+}
+
+.imgflutuanteesq{
+    width: 150px;
+    float: left;
+}
+
+.imgflutuantedir{
+    width: 150px;
+    float: right;
+}
+
+.bloco{
+    width: 30%;
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 10px 7px rgb(53, 52, 52);
+}
+
+#galeria{
+    clear: both;
+    text-align: center;
+}
+
+body{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-image: url("paisagem.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+main{
+    width: 90%;
+    margin: auto;
+}
+
+h1{
+    text-align: center;
+    color: rgb(97, 248, 97);
+}

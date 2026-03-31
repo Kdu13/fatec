@@ -1,0 +1,67 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+
+namespace ConsoleApp2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Digite a qtd de valores: ");
+            int qtd = Convert.ToInt32(Console.ReadLine());
+            int[] num = new int[qtd];
+
+            for (int i = 0; i < qtd; i++)
+            {
+                Console.Write($"Digite O valor da posicao {i}: ");
+                num[i] = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine("::::::MOSTRANDO OS VALORES::::::");
+            for (int i = 0; i < num.Length; i++)
+            {
+                Console.WriteLine($"Na posição: {i} tem o numero: {num[i]}");
+                Thread.Sleep(500);
+            }
+
+            Console.WriteLine("::::::MOSTRANDO VALORES ORDENADOS EM CRESCENTE::::::");
+
+            Array.Sort(num);
+            for (int i = 0; i < num.Length; i++)
+            {
+                Console.WriteLine($"Na posição: {i} tem o numero: {num[i]}");
+                Thread.Sleep(500);
+            }
+
+            Console.WriteLine("::::::MOSTRANDO VALORES ORDENADOS EM DECRESCENTE::::::");
+
+            for (int i = qtd-1; i >= 0; i--)
+            {
+                Console.WriteLine($"Na posição: {i} tem o numero: {num[i]}");
+                Thread.Sleep(500);
+            }
+
+
+            Console.WriteLine("::::::FOREACH::::::");
+            int contador = 0;
+            foreach(int valor in num)
+            {
+                Console.WriteLine($"Na posição: {contador} tem o numero: {valor}");
+                contador++;
+                Thread.Sleep(500);
+            }
+
+
+
+
+
+
+
+
+            Console.ReadKey();
+        }
+    }
+}

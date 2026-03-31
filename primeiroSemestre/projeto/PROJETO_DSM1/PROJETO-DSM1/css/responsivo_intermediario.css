@@ -1,0 +1,98 @@
+@media (min-width: 601px) and (max-width: 1024px) {
+.cabecalho > .container-fluid{
+    height: 100px;
+  }
+  .cabecalho>section>a>img{
+    display: none !important;
+  }
+  .cabecalho > section > nav{
+    justify-content: space-between;
+    
+  }
+  .cabecalho > section > nav > a {
+    margin: 0 10px !important;
+    font-size: 0.8em !important;
+    
+  }
+  .informacao_footer {
+    flex-direction: column !important;
+    font-size: 0.78em !important;
+  }
+  .informacao_footer > div > .barra_vertical_servico{
+    border: none !important;
+  }
+  .informacao_footer > div > .barra_vertical{
+    border: none !important;
+  }
+  .informacao_footer > div > div > #map{
+    width: 100% !important;
+  }
+  .informacao_footer .col-md-3:first-child {
+    display: none;
+  }
+  .informacao_footer .row > .col-md-3:not(:first-child) {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  .redes_pagamentos {
+    flex-direction: column !important;
+    font-size: 1.3em !important;
+  }
+  .redes_pagamentos  > .redes, .pagamentos{
+    text-align: center !important;
+    margin-bottom: 20px !important;
+  }
+  .contato-container {
+    flex-direction: column !important;
+  }
+  .contato-container > aside {
+    display: none !important;
+  }
+  .imagem_sobre {
+    display: none;
+  }
+  .titulo_principal{
+    font-size: 1.3em !important;
+  }
+  .titulo_secundario{
+    font-size: 1em !important;
+  }
+  .carousel-indicators {
+    display: none !important;
+  }
+
+  #carouselExampleIndicators > div {
+    height: 50% !important;
+    margin: 30px 0 !important;
+  }
+
+  .row.g-3 > .col-sm-3 {
+    flex: 0 0 50% !important; 
+    max-width: 50% !important;
+  }
+
+.col-sm-6.col-md-3 {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+  }
+
+
+  .container_menu_lateral_vendas {
+    display: none !important;
+  }
+
+  .box_cards_index{
+    flex-direction: column;
+  }
+  .box_card_index{
+    width: 80vw;
+  }
+ .imgfixa {
+    right: 2em;
+    bottom: 10em;
+    z-index: 9998;
+}
+.formulario_contato {
+  min-width: 500px;
+}
+}

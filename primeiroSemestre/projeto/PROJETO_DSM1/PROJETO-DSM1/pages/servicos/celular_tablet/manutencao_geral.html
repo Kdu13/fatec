@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="shortcut icon" href="../../../assets/icons/logo.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link href="../../../assets/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../css/fonts.css">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <link rel="stylesheet" href="../../../css/pages.css">
+    <link rel="stylesheet" href="../../../css/responsivo_computador.css">
+    <link rel="stylesheet" href="../../../css/responsivo_intermediario.css">
+    <link rel="stylesheet" href="../../../css/responsivo_celular.css">
+    <title>R.E Assistência técnica | Manutenções Gerais</title>
+</head>
+
+<body>
+    <header class="cabecalho">
+        <section class="container-fluid d-flex p-3">
+            <a href="../../../index.html">
+                <img src="../../../assets/imagens/logo/logo.png" alt="logo">
+            </a>
+            <nav class="nav w-100">
+                <a class="flex-sm-fill text-sm-center" href="../../../index.html">Inicio</a>
+                <a class="flex-sm-fill text-sm-center" href="../../sobre.html">Sobre</a>
+                <a class="ativo flex-sm-fill text-sm-center" role="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">Serviços</a>
+                <a class="flex-sm-fill text-sm-center" href="../../vendas.html">Loja</a>
+                <a class="flex-sm-fill text-sm-center link_contato" href="../../contato.html">Contato</a>
+            </nav>
+        </section>
+
+        <div class="offcanvas offcanvas-start menu_lateral" tabindex="-1" id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel">
+            <div class=" offcanvas-header menu_lateral_header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Serviços</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+            </div>
+            <div class="offcanvas-body menu_lateral_body">
+                <ul class="list-unstyled">
+
+                    <li class="titulo_vendas_lateral">Celulares e Tablets</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="../celular_tablet/troca_tela.html">Troca de tela</a></li>
+                        <li><a href="../celular_tablet/troca_bateria.html">Troca de bateria</a></li>
+                        <li><a href="../celular_tablet/conector_carga.html">Conectores de carga</a>
+                        </li>
+                        <li><a href="../celular_tablet/att_formatacao.html">Atualizações e
+                                formatação</a></li>
+                        <li><a href="../celular_tablet/manutencao_geral.html">Outras manutenções
+                                gerais</a></li>
+                    </ul>
+
+                    <li class="titulo_vendas_lateral">Notebooks e PCs</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="../note_pc/formatacao_instalacao.html">Formatação e instalação de
+                                sistemas</a></li>
+                        <li><a href="../note_pc/limpeza_manuntencao.html">Limpeza e manutenção
+                                preventiva</a></li>
+                        <li><a href="../note_pc/troca_pecas.html">Troca de peças (HD, SSD, memória
+                                etc.)</a></li>
+                        <li><a href="../note_pc/diagnostico_reparos.html">Diagnóstico e reparos em
+                                hardware</a></li>
+                        <li><a href="../note_pc/otimizacao.html">Otimização de desempenho</a></li>
+                    </ul>
+
+                    <li class="titulo_vendas_lateral">Marketing e Design</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="../marketing_design/criacao_artes.html">Criação de artes</a></li>
+                        <li><a href="../marketing_design/gestao_redes_sociais.html">Gestão de redes
+                                sociais</a></li>
+                        <li><a href="../marketing_design/gestao_trafego_pago.html">Gestão de tráfego
+                                pago</a></li>
+                    </ul>
+
+                    <li class="titulo_vendas_lateral">Suporte Remoto</li>
+                    <ul class="caixa_links_lateral list-unstyled">
+                        <li><a href="../suporte_remoto/instalacao_programas.html">Instalação de
+                                programas</a></li>
+                        <li><a href="../suporte_remoto/config_otimizacao.html">Configurações e
+                                otimizações</a></li>
+                        <li><a href="../suporte_remoto/ajuda_softwares.html">Ajuda com softwares
+                                específicos</a></li>
+                    </ul>
+                </ul>
+
+            </div>
+        </div>
+
+    </header>
+
+    <main class="principal container-fluid" style="justify-items: center;">
+        <div class="card box_card_pages">
+            <img class="card-img-top" src="../../../assets/imagens/imagens_servicos/celular_tablet/manuntencao.png"
+                alt="Imagem de capa do card">
+            <div class="card-body">
+                <h5 class="card-title">Manutenções Gerais</h5>
+                <p class="card-text">Cuidamos de diversos problemas no seu aparelho: travamentos, falhas no sistema,
+                    limpeza interna, troca de componentes e muito mais. Diagnóstico rápido e serviço com garantia!</p>
+                <a href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Gostaria%20de%20fazer%20uma%20Manuten%C3%A7%C3%A3o%20Geral."
+                    target="_blank">
+                    <button type="button" class="btn btn_pages">Entre em Contato</button>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="rodape container-fluid">
+        <section class="principal_footer">
+            <section class="informacao_footer container pt-5 pb-5">
+                <div class="row text-center align-items-center">
+
+                    <div class="col-12 col-md-3 mb-3 mb-md-0">
+                        <a href="../../../index.html">
+                            <img src="../../../assets/imagens/logo/logo.png" alt="logo" class="img-fluid">
+                        </a>
+                    </div>
+
+
+                    <div class="col-12 col-md-3 mb-3 mb-md-0 barra_vertical_servico">
+                        <h2>Serviços</h2>
+                        <ul class="list-unstyled">
+                            <li class="list-group-item"><a
+                                    href="../../../pages/servicos/celular_tablet/troca_tela.html">Troca de Tela</a></li>
+                            <li class="list-group-item"><a
+                                    href="../../../pages/servicos/celular_tablet/troca_bateria.html">Troca de
+                                    Bateria</a></li>
+                            <li class="list-group-item"><a href="../../../pages/servicos/note_pc/troca_pecas.html">Troca
+                                    de
+                                    Peças PC</a></li>
+                            <li class="list-group-item"><a
+                                    href="../../../pages/servicos/note_pc/formatacao_instalacao.html">Formatação</a>
+                            </li>
+                            <li class="list-group-item"><a
+                                    href="../../../pages/servicos/marketing_design/gestao_trafego_pago.html">Gestão de
+                                    Tráfego Pago</a></li>
+                            <li class="list-group-item"><a
+                                    href="../../../pages/servicos/marketing_design/criacao_artes.html">Criação de
+                                    Artes</a>
+                            </li>
+                            <li class="list-group-item"><a
+                                    href="../../../pages/servicos/suporte_remoto/ajuda_softwares.html">Ajuda com
+                                    Softwares</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3 mb-3 mb-md-0 barra_vertical">
+                        <h2>Saiba Mais</h2>
+                        <ul class="list-unstyled">
+                            <li class="list-group-item"><a href="../../../pages/sobre.html">Sobre a R.E Assistência</a>
+                            </li>
+                            <li class="list-group-item"><a href="https://www.instagram.com/caiorafasdad/"
+                                    target="_blank">Dicas de Manutenção</a></li>
+                            <li class="list-group-item"><a
+                                    href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20vim%20do%20site%2C%20gostaria%20de%20um%20suporte!"
+                                    target="_blank">Suporte via WhatsApp</a></li>
+                            <li class="list-group-item"><a href="../../../pages/vendas.html">Loja</a></li>
+                            <li class="list-group-item"><a href="#">Blog / Novidades</a></li>
+                            <li class="list-group-item"><a href="#">Termos e Condições</a></li>
+                            <li class="list-group-item"><a href="#">Política de Privacidade</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3">
+                        <h2>Mapa</h2>
+                        <div id="map" style="height: 220px; width: 120%;"></div>
+                    </div>
+
+
+                </div>
+            </section>
+
+            <section class="redes_pagamentos container-fluid d-flex justify-content-around pt-5 pb-5">
+                <div class="redes d-flex flex-column">
+                    <p class="me-2">Redes Sociais</p>
+                    <section>
+                        <a class="me-3 instagram" href="https://www.instagram.com/caiorafasdad/" target="_blank"
+                            style="background: linear-gradient(45deg, #ff00bf, #FF421F); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">Instagram
+                            <i class="fab fa-instagram"></i>
+                        </a>
+
+                        <a class="me-3"
+                            href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Eu%20vim%20do%20site%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+                            target="_blank"
+                            style="background: linear-gradient(45deg, lightgreen, green); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">WhatsApp
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+
+                        <a href="https://www.facebook.com/caiopintor.s" target="_blank"
+                            style="background: linear-gradient(45deg, rgb(0, 140, 255), rgb(0, 0, 255)); -webkit-background-clip: text;-webkit-text-fill-color: transparent;">Facebook
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </section>
+                </div>
+                <div class="pagamentos d-flex flex-column">
+                    <p class="me-2">Formas de Pagamento</p>
+                    <section>
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/visa.png" alt="Visa">
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/mastercard2.png"
+                            alt="Mastercard">
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/elo.png" alt="Elo">
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/hipercard.png" alt="Hypercard">
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/americanexpress.png"
+                            alt="American Express">
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/samsungpay.png"
+                            alt="Samsung Pay">
+                        <img class="mb-1" src="../../../assets/imagens/icones_pagamento/googlepay.png" alt="Google Pay">
+                        <i class="fab fa-pix mt-1 me-2" style="color: rgba(0, 255, 255, 0.55);"></i>
+                        <i class="fa-solid fa-barcode mt-1 me-2"
+                            style="background: linear-gradient(-45deg, rgb(230, 230, 230), rgb(150, 150, 150)); -webkit-background-clip: text;-webkit-text-fill-color: transparent;"></i>
+                    </section>
+                </div>
+            </section>
+
+            <section class="direitos_autorais pt-3 pb-1">
+                <p>&copy;2025 R.E Assistência técnica | Todos os direitos reservados.</p>
+            </section>
+        </section>
+    </footer>
+    <section>
+
+        <a href="https://wa.me/5513991290815?text=Ol%C3%A1%2C%20tudo%20bem%3F%20Eu%20vim%20do%20site%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento."
+            target="_blank">
+            <img src="../../../assets/imagens/logo_whats.png" alt="Imagem fixa" class="imgfixa">
+        </a>
+        <div id="loadingOverlay">
+            <div class="spinner"></div>
+        </div>
+
+    </section>
+    <script src="../../../assets/jquery/jquery.min.js"></script>
+    <script src="../../../assets/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="../../../js/index.js"></script>
+</body>
+
+</html>

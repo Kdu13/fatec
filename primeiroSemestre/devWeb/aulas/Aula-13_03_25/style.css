@@ -1,0 +1,29 @@
+h2{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    background-color: aqua;
+    text-decoration: overline;
+    font-weight: bold;
+}
+
+#home{
+    text-shadow: 5px 5px 5px;
+    text-align: center;
+}
+
+.item{
+    display: inline-block;
+    padding: 10px;
+}
+
+body{
+    background-color: rgb(0, 253, 34);
+
+}
+
+p{
+
+    text-align: justify;
+    line-height: 30px;
+    text-indent: 50px;
+}

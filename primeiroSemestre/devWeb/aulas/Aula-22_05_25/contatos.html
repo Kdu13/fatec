@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Contatos</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f5f7fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    #formContato {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="tel"] {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    #btnAdicionar {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    #btnApagar:hover {
+      background-color: #226325;
+    }
+
+    #btnApagar {
+      width: 100%;
+      background-color: red;
+      color: white;
+    }
+
+    #btnApagar:hover {
+      background-color: rgb(161, 14, 14);
+    }
+
+    .destacar {
+      background-color: rgb(17, 182, 80);
+    }
+
+    #icone_cor {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 70px;
+    }
+
+    .modo_cor {
+      background-color: rgba(0, 0, 0, 0.527);
+      color: whitesmoke;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2 id="titulo">Agenda Telefônica</h2>
+
+    <div id="formContato">
+      <input type="text" id="nome" placeholder="Nome" required>
+      <input type="tel" id="telefone" placeholder="(00) 00000-0000" value="(00) 00000-0000" required>
+      <button id="btnAdicionar" onclick="add_contato()">Adicionar Contato</button>
+    </div>
+
+    <div id="listaContatos"></div>
+    <button id="btnApagar" onclick="apagar_lista()">Apagar Lista de Contatos</button>
+
+  </div>
+
+  <img src="https://cdn-icons-png.flaticon.com/256/6077/6077095.png" id="icone_cor">
+
+  <script>
+    //Icone MODO COR
+    const icone = document.getElementById("icone_cor");
+    icone.onclick = function () {
+      document.body.classList.toggle("modo_cor");
+    }
+
+    //Altera o estilo do h2
+    const titulo = document.getElementById("titulo");
+    titulo.style.color = "#45a049";
+    titulo.style.textAlign = "center";
+    titulo.style.fontSize = "34px";
+    titulo.style.textShadow = "2px 2px 5px silver";
+
+    //Altera a cor do fundo
+    // document.body.style.backgroundColor = "silver"
+
+    //DIV que exibe a lista de contatos
+    const lista = document.getElementById("listaContatos");
+
+    function apagar_lista() {
+      lista.textContent = "";
+    }
+
+    function add_contato() {
+      const nome = document.getElementById("nome").value;
+      const telefone = document.getElementById("telefone").value;
+
+      if (nome != "" && telefone != "") {
+
+        //Cria uma tag DIV
+        const item = document.createElement("div");
+        item.style.border = "1px solid green";
+        item.style.padding = "20px";
+        item.style.marginBottom = "15px";
+        item.style.borderRadius = "10px";
+        item.style.display = "flex";
+        item.style.justifyContent = "space-around";
+
+        //Cria uma tag IMG e adiciona uma DIV
+        const imagem = document.createElement("img");
+        imagem.src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgiO3pYW2-hwRUIU11yvmwhA8wINBrJ4T_-sXmSkXUThPCDIKQV3pMcK7khCmW4Z2Wedw&usqp=CAU";
+        imagem.style.width = "10%"
+        item.appendChild(imagem);
+
+        //Cria uma tag P e adiciona uma DIV
+        const paragrafo = document.createElement("p");
+        paragrafo.textContent = nome + " - " + telefone;
+        item.appendChild(paragrafo);
+
+        //Cria uma tag BUTTON
+        const botao_destaque = document.createElement("button");
+        botao_destaque.textContent = "Destacar";
+        botao_destaque.style.backgroundColor = "yellow";
+        botao_destaque.onclick = function () {
+          item.classList.toggle("destacar");
+        }
+        item.appendChild(botao_destaque);
+
+        const botao_excluir = document.createElement("button");
+        botao_excluir.textContent = "Excluir";
+        botao_excluir.style.backgroundColor = "red";
+        botao_excluir.style.color = "white";
+        botao_excluir.onclick = function () {
+          lista.removeChild(item);
+
+        }
+        item.appendChild(botao_excluir);
+
+        //adiciona a DIV na lista, que também é uma DIV
+        lista.appendChild(item);
+      } else {
+        alert("Preencha todos os campos!!!");
+      }
+
+    }
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+ 
+<body>
+    <form onsubmit="exibirMsg(event)">
+        <label>Digite seu nome: </label>
+        <input type="text" id="txtnome"><br>
+        <button>Enviar</button>
+    </form>
+ 
+    <p id="saida"></p>
+ 
+    <script>
+ 
+        function exibirMsg(event){
+            event.preventDefault();
+            const nome = document.getElementById("txtnome").value;
+            const para = document.getElementById("saida");
+            saida.innerHTML = "Seja Bem-Vindo(a): " + nome;
+        }
+    </script>
+</body>
+ 
+</html>

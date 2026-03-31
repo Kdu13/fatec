@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico">
+    <title>Aula 13/03/25</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <ul>
+        <li class="item"> <a href="#home">home</a></li>
+        <li class="item"><a href="galeria.html">galeria</a></li>
+        <li class="item"><a href="#listas">listas</a></li>
+        <li class="item"><a href="#tabela">tabela</a></li>
+        <li class="item"><a href="#formulario">formulario</a></li>
+    </ul>
+
+    
+
+    <h1 id="home" style="color: blueviolet;"> HTML</h1>
+    <P>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+        Quos omnis vitae ab, dolore autem laudantium officiis voluptate ipsam cupiditate corporis pariatur,
+        quae, id ducimus earum culpa tempore reprehenderit nesciunt totam!</P>
+
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio minus vel, nostrum quidem corrupti sint similique
+        at
+        impedit! Sapiente nihil qui laborum odit. Porro aspernatur non magnam quo cumque natus.</p>
+
+    <h2>
+        Lista não ordenada
+    </h2>
+
+    <ul type="square">
+        <li>HTML</li>
+        <li>CSS</li>
+        <ul>
+            <li>inline</li>
+            <li>interno</li>
+            <li>externo</li>
+        </ul>
+        <li>JAVASCRIPT</li>
+    </ul>
+
+    <h2>
+        Lista ordenada
+    </h2>
+
+    <oL type="I" start="1">
+        <li>php</li>
+        <li>python</li>
+        <li>react native</li>
+    </ol>
+
+    <h2>Tabela</h2>
+
+    <table border="2">
+        <tr>
+            <th> coluna 01</th>
+            <th>coluna 02</th>
+            <th rowspan="2">coluna 03</th>
+        </tr>
+        <tr>
+            <td> dados 01</td>
+            <td>dados 02</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">dados 04</td>
+            <td>dados 03</td>
+
+        </tr>
+
+    </table>
+
+    <h2>formulario
+    </h2>
+    <form>
+
+        <label for="txtnome">nome</label>
+        <input type="text" id="txtnome" required>
+        <br><br>
+        <label>E-mail</label>
+        <input type="email">
+        <br><br>
+
+        <label for="senha">senha</label>
+        <input type="password" id="senha" maxlength="8">
+        <br><br>
+
+        <label>numero:</label>
+        <input type="tel" placeholder="(13)99999-9999" pattern="\(\d{2}\)\d{5}-\d{4}">
+        <br><br>
+
+        <label>cidade:</label>
+        <select>
+            <optgroup label="São paulo">
+                <option>Praia grande</option>
+                <option>santos</option>
+                <option>São bernardo</option>
+            </optgroup>
+            <optgroup label="Rio de janeiro">
+                <option>tijuca</option>
+                <option>madureira</option>
+                <option>copacabana</option>
+            </optgroup>
+        </select>
+        <br><br>
+
+        <label>curso:</label>
+        <input type="radio" name="curso">ads
+        <input type="radio" name="curso">dsm
+        <br><br>
+
+        <label>periodo:</label>
+        <input type="checkbox">vespertino
+        <input type="checkbox">noturno
+        <br><br>
+
+        <label>mensagem</label><br>
+        <textarea cols="50" rows="10"></textarea>
+        <br><br>
+
+        <input type="submit" value="salvar" style="background-color: blue;">
+        <input type="reset" value="limpar" style="background-color: darkred;">
+
+    </form>
+
+</body>
+
+</ht

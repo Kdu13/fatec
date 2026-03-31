@@ -1,0 +1,101 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: rgb(90,90,90);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+}
+
+body {
+    height: 100vh;
+    background-color: rgba(209, 209, 209, 0.5);
+}
+
+h1 {
+    text-align: center;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: rgb(70, 70, 70);
+    padding: 2em;
+    font-size: 2.5em;
+}
+
+.container {
+    background: rgb(245,245,245);
+    padding: 3em;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5%
+}
+
+.formulario>label{
+    color: rgb(60, 60, 60);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.3em;
+    margin-bottom: 0.3em;
+}
+.formulario> select {
+    padding: 0.5em;
+}
+.formulario> select > option , .formulario > input{
+    color: rgb(90,90,90);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.03em;
+    padding: 0.3em;
+}
+.Beneficios, .tipo_contrato {
+    margin: 0 0.5em;
+}
+
+button {
+    background-color: rgb(230,230,230);
+    border: 1px solid rgb(180,180,180);
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    border-radius: 4px;
+    color: rgb(90,90,90);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1.03em;
+    padding: 0.3em;
+}
+
+button:hover {
+    background-color: rgb(200,200,200);
+    color: rgb(70,70,70);
+    font-size: 1.05em;
+    padding: 0.4em;
+}
+
+.resultado {
+    background: rgb(245,245,245);
+    border-left: 5px solid rgb(90,90,90);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 3em auto;
+    border-radius: 5px;
+    max-width: 550px;
+    padding: 1em;
+}
+.resultado > p{
+    padding: 0.2em;
+}
+.resultado > p>b {
+    color: rgb(90,90,90);
+    font-family: "Inter", sans-serif;
+    font-weight: 800;
+    
+}
+.resultado > p>i {
+    color: green;
+}

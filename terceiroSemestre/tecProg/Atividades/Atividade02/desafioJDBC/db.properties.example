@@ -1,0 +1,4 @@
+# Copie este arquivo para db.properties e preencha com as credenciais locais.
+DB_URL=jdbc:postgresql://localhost:5432/postgres
+DB_USER=postgres
+DB_PASSWORD=sua_senha_aqui

@@ -8,7 +8,7 @@ public class ConnectionFactory {
 
     private static final String URL = "jdbc:postgresql://localhost:5432/pokedex";
     private static final String USER = "postgres";
-    private static final String PASSWORD = "Ksl2001@";
+    private static final String PASSWORD = "postgres";
 
     public static Connection getConnection() {
         try {

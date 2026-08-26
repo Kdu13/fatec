@@ -9,7 +9,7 @@ public class DB {
     public static Connection connection() throws SQLException {
         String jdbcUrl = "jdbc:postgresql://localhost:5432/postgres";
         String user = "postgres";
-        String password = "Ksl2001@";
+        String password = "postgres";
 
         return DriverManager.getConnection(jdbcUrl, user, password);
     }

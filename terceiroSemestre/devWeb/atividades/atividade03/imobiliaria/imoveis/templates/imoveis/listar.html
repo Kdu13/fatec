@@ -1,0 +1,101 @@
+{% extends "imoveis/base.html" %}
+
+{% block conteudo %}
+  <h1>Imóveis cadastrados</h1>
+
+  <form class="filtros" method="get">
+    <div class="filtros__campos">
+      <div>
+        <label for="titulo">Título</label>
+        <input type="text" id="titulo" name="titulo" value="{{ request.GET.titulo }}">
+      </div>
+      <div>
+        <label for="tipo">Tipo</label>
+        <select id="tipo" name="tipo">
+          <option value="">Todos</option>
+          {% for valor, rotulo in tipos %}
+            <option value="{{ valor }}" {% if request.GET.tipo == valor %}selected{% endif %}>{{ rotulo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="finalidade">Finalidade</label>
+        <select id="finalidade" name="finalidade">
+          <option value="">Todas</option>
+          {% for valor, rotulo in finalidades %}
+            <option value="{{ valor }}" {% if request.GET.finalidade == valor %}selected{% endif %}>{{ rotulo }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label for="cidade">Cidade</label>
+        <input type="text" id="cidade" name="cidade" value="{{ request.GET.cidade }}">
+      </div>
+      <div>
+        <label for="preco_max">Preço máximo (R$)</label>
+        <input type="number" id="preco_max" name="preco_max" min="0" step="0.01" value="{{ request.GET.preco_max }}">
+      </div>
+      <div>
+        <label for="quartos">Quartos</label>
+        <input type="number" id="quartos" name="quartos" min="0" value="{{ request.GET.quartos }}">
+      </div>
+    </div>
+    <div class="filtros__acoes">
+      <button type="submit" class="btn">Filtrar</button>
+      <a href="{% url 'listar_imoveis' %}" class="btn btn--claro">Limpar filtros</a>
+    </div>
+  </form>
+
+  {% if imoveis %}
+    <p class="resultado">{{ imoveis|length }} imóvel(is) encontrado(s)</p>
+
+    <div class="grade">
+      {% for imovel in imoveis %}
+        <article class="card">
+          <div class="card__midia">
+            {% if imovel.imagem %}
+              <img src="{{ imovel.imagem.url }}" alt="Foto de {{ imovel.titulo }}">
+            {% else %}
+              <div class="sem-imagem">Nenhuma imagem cadastrada para este imóvel.</div>
+            {% endif %}
+          </div>
+
+          <div class="card__corpo">
+            <div class="selos">
+              <span class="selo selo--preenchido">{{ imovel.get_finalidade_display }}</span>
+              <span class="selo">{{ imovel.get_tipo_display }}</span>
+            </div>
+
+            <h2>{{ imovel.titulo }}</h2>
+
+            <p class="preco">
+              R$ {{ imovel.preco|floatformat:"2g" }}
+              {% if imovel.finalidade == "aluguel" %}<small>/mês</small>{% endif %}
+            </p>
+
+            <dl class="dados">
+              <div>
+                <dt>Cidade</dt>
+                <dd>{{ imovel.cidade }}</dd>
+              </div>
+              <div>
+                <dt>Quartos</dt>
+                <dd>{{ imovel.quartos }}</dd>
+              </div>
+            </dl>
+
+            <div class="card__acoes">
+              <a href="{% url 'editar_imovel' imovel.pk %}" class="btn btn--claro">Editar</a>
+              <a href="{% url 'excluir_imovel' imovel.pk %}" class="btn btn--contorno-perigo">Excluir</a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="vazio">
+      <p>Nenhum imóvel encontrado com esses filtros.</p>
+      <a href="{% url 'cadastrar_imovel' %}" class="btn">Cadastrar imóvel</a>
+    </div>
+  {% endif %}
+{% endblock %}

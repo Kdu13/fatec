@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Morada Imóveis{% endblock %}</title>
+  <style>
+    :root {
+      --tinta: #16252b;
+      --petroleo: #0e4a5a;
+      --petroleo-escuro: #0a3742;
+      --fundo: #f2f4f3;
+      --branco: #ffffff;
+      --linha: #d3dbdc;
+      --suave: #5b6b70;
+      --latao: #8f5f10;
+      --perigo: #9e2f28;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: var(--tinta);
+      background: var(--fundo);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    :focus-visible { outline: 3px solid #e0a83a; outline-offset: 2px; }
+
+    /* Cabeçalho */
+    .topo { background: var(--petroleo); color: #fff; }
+    .topo__interno {
+      max-width: 1120px; margin: 0 auto; padding: 18px 20px;
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 12px;
+    }
+    .marca {
+      font-family: var(--serif); font-size: 1.6rem; font-weight: 700;
+      text-decoration: none; letter-spacing: 0.01em;
+    }
+    .topo nav { display: flex; gap: 8px; }
+    .topo nav a {
+      text-decoration: none; padding: 8px 14px; border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+    .topo nav a:hover { background: rgba(255, 255, 255, 0.12); }
+    .topo nav a.destaque { background: #fff; color: var(--petroleo); border-color: #fff; font-weight: 600; }
+    .topo nav a.destaque:hover { background: #e7eeee; }
+
+    .pagina { max-width: 1120px; margin: 0 auto; padding: 28px 20px 56px; }
+    h1 { font-family: var(--serif); font-size: 1.9rem; margin: 0 0 20px; }
+
+    /* Mensagens */
+    .mensagem {
+      background: #e3f1ea; border-left: 4px solid #2f7d55;
+      padding: 12px 16px; margin-bottom: 20px; border-radius: 0 4px 4px 0;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-block; font: inherit; font-weight: 600; cursor: pointer;
+      padding: 9px 16px; border-radius: 4px; text-decoration: none; text-align: center;
+      border: 1px solid var(--petroleo); background: var(--petroleo); color: #fff;
+    }
+    .btn:hover { background: var(--petroleo-escuro); }
+    .btn--claro { background: transparent; color: var(--petroleo); }
+    .btn--claro:hover { background: #e3eded; }
+    .btn--perigo { background: var(--perigo); border-color: var(--perigo); }
+    .btn--perigo:hover { background: #7d231e; }
+    .btn--contorno-perigo { background: transparent; color: var(--perigo); border-color: var(--perigo); }
+    .btn--contorno-perigo:hover { background: #f8e6e4; }
+
+    /* Filtros */
+    .filtros {
+      background: var(--branco); border: 1px solid var(--linha);
+      border-radius: 6px; padding: 18px; margin-bottom: 24px;
+    }
+    .filtros__campos {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+    .filtros__acoes { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+
+    label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    input[type="text"], input[type="number"], input[type="email"],
+    select, textarea {
+      width: 100%; font: inherit; padding: 9px 10px; color: var(--tinta);
+      border: 1px solid #aebcbf; border-radius: 4px; background: #fff;
+    }
+    input[type="file"] { width: 100%; font: inherit; }
+
+    /* Resultado */
+    .resultado { color: var(--suave); margin: 0 0 14px; }
+    .grade {
+      display: grid; gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .card {
+      background: var(--branco); border: 1px solid var(--linha);
+      border-radius: 6px; overflow: hidden; display: flex; flex-direction: column;
+    }
+    .card__midia { aspect-ratio: 16 / 10; background: #dfe6e7; }
+    .card__midia img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sem-imagem {
+      height: 100%; display: flex; align-items: center; justify-content: center;
+      padding: 16px; text-align: center; color: var(--suave); font-size: 0.95rem;
+    }
+    .card__corpo { padding: 16px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .selos { display: flex; gap: 6px; flex-wrap: wrap; }
+    .selo {
+      font-size: 0.8rem; font-weight: 600; padding: 2px 9px; border-radius: 3px;
+      border: 1px solid var(--petroleo); color: var(--petroleo);
+    }
+    .selo--preenchido { background: var(--petroleo); color: #fff; }
+    .card h2 { font-family: var(--serif); font-size: 1.25rem; line-height: 1.25; margin: 0; }
+    .preco { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; color: var(--latao); margin: 0; }
+    .preco small { font-family: var(--sans); font-size: 0.85rem; font-weight: 400; color: var(--suave); }
+    .dados {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 0;
+      padding-top: 10px; border-top: 1px solid var(--linha);
+    }
+    .dados dt { font-size: 0.8rem; color: var(--suave); }
+    .dados dd { margin: 0; font-weight: 600; }
+    .card__acoes { display: flex; gap: 8px; margin-top: auto; padding-top: 6px; }
+    .card__acoes .btn { flex: 1; padding: 7px 10px; }
+
+    .vazio {
+      background: var(--branco); border: 1px dashed #aebcbf; border-radius: 6px;
+      padding: 40px 20px; text-align: center; color: var(--suave);
+    }
+
+    /* Formulários */
+    .painel {
+      background: var(--branco); border: 1px solid var(--linha);
+      border-radius: 6px; padding: 24px; max-width: 640px;
+    }
+    .campo { margin-bottom: 16px; }
+    .erro { color: var(--perigo); font-size: 0.9rem; margin: 4px 0 0; }
+    .ajuda { color: var(--suave); font-size: 0.85rem; margin: 4px 0 0; }
+    .acoes { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+    .aviso-exclusao { margin: 0 0 20px; }
+
+    @media (max-width: 520px) {
+      .topo__interno { flex-direction: column; align-items: flex-start; }
+      .painel { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <div class="topo__interno">
+      <a class="marca" href="{% url 'listar_imoveis' %}">Morada Imóveis</a>
+      <nav>
+        <a href="{% url 'listar_imoveis' %}">Imóveis</a>
+        <a class="destaque" href="{% url 'cadastrar_imovel' %}">Cadastrar imóvel</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pagina">
+    {% for mensagem in messages %}
+      <div class="mensagem" role="status">{{ mensagem }}</div>
+    {% endfor %}
+
+    {% block conteudo %}{% endblock %}
+  </main>
+</body>
+</html>
